@@ -1,0 +1,16 @@
+<!--zh_zbkq/pages/my/tjhxy/tjhxy.wxml-->
+<view class="container">
+  <view class="head">
+    <view class="head-img">
+      <image src="data:image/png;base64,{{bath}}"></image>
+    </view>
+    <view class="head-name">扫一扫，添加核销员</view>
+  </view>
+  <view class="hxy" wx:if="{{hxylist.length!=0}}">核销员</view>
+  <view class="hxylist" wx:for="{{users}}">
+    <image src="{{item.img}}"></image>
+    <view class="hxy-bd">{{item.name}}</view>
+    <view class="sc" data-uid='{{item.ry_id}}' bindtap='sc'>删除</view>
+  </view>
+  <view class="hxy" wx:if="{{users.length==0}}">暂未添加核销员</view>
+</view>

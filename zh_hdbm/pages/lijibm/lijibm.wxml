@@ -1,0 +1,64 @@
+<view class="font baoming">
+  <form bindsubmit="formSubmit" bindreset="formReset" report-submit='true' wx:if="{{type=='1'}}">
+    <view class="baom">
+      <view class="baom1">请填写报名信息</view>
+      <view class="baom2">姓名</view>
+      <view class="baom_inp">
+        <input class="inp" name="xm" type="text" placeholder-style="color:#e5e5e5;font-size:28rpx;" placeholder="请填写您的姓名" />
+      </view>
+      <view class="baom2">手机</view>
+      <view class="baom_inp">
+        <input name="mobile" class="inp" name="sjh" type="number" maxlength="11" placeholder-style="color:#e5e5e5;font-size:28rpx;" placeholder="请填写您的手机号" bindblur="mobileBlurFocus" focus="{{whoFocus=='mobile'?true:false}}" />
+      </view>
+    </view>
+
+    <view class="baom_li">
+      <view class="baom_li2">
+        <view class="footer">
+          <view class="footer1">
+            <!-- <image src="../images/zhihui@2x.png" class="footer_img"></image> -->
+            <text class="footer_text1">{{seller.copyright}}</text>
+          </view>
+        </view>
+      </view>
+      <button wx:if="{{coll<=0}}" class="baom_li3" formType="submit">
+        <text class='text1'>报名</text> （免费）</button>
+      <button wx:if="{{coll>0}}" class="baom_li3" formType="submit">
+        <text class='text1'>报名</text> （需支付{{coll}}元）</button>
+
+    </view>
+  </form>
+  <form bindsubmit="formSubmit" bindreset="formReset" report-submit='true' wx:if="{{type=='2'}}">
+    <view class="baom1">请填写报名信息</view>
+    <view class="baom" wx:for="{{siteinfo}}">
+      <view class="baom2">{{item.name}}</view>
+      <view class="baom_inp">
+        <input class="inp" name="{{item.id}}" placeholder-style="color:#e5e5e5;font-size:28rpx;" placeholder="请输入您的{{item.name}}" />
+      </view>
+      <!-- <view class="baom2">手机</view>
+      <view class="baom_inp">
+        <input name="mobile" class="inp" name="sjh" type="number" maxlength="11" placeholder-style="color:#e5e5e5;font-size:28rpx;" placeholder="请填写您的手机号" bindblur="mobileBlurFocus" focus="{{whoFocus=='mobile'?true:false}}" />
+      </view> -->
+    </view>
+
+    <view class="baom_li">
+      <view class="baom_li2">
+        <view class="footer">
+          <view class="footer1">
+            <!-- <image src="../images/zhihui@2x.png" class="footer_img"></image> -->
+            <text class="footer_text1">{{seller.copyright}}</text>
+          </view>
+        </view>
+      </view>
+      <button wx:if="{{coll<=0}}" class="baom_li3" formType="submit">
+        <text class='text1'>报名</text> （免费）
+      </button>
+      <button wx:if="{{coll>0&&pay==false}}" class="baom_li3" formType="submit">
+        <text class='text1'>报名</text> （需支付{{coll}}元）
+      </button>
+      <button wx:if="{{coll>0&&pay==true}}" class="baom_li3">
+        <text class='text1'>报名</text> （需支付{{coll}}元）
+      </button>
+    </view>
+  </form>
+</view>

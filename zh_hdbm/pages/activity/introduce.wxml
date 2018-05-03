@@ -1,0 +1,13 @@
+<!--zh_hdbm/pages/activity/introduce.wxml-->
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class='container font rel'>
+    <textarea maxlength="1000" name="text" placeholder='{{text}}' auto-height="true" auto-focus="true"  placeholder-style="font-family:'微软雅黑';color:#999"></textarea>
+    <view class='introduce_img' wx:for="{{logo}}">
+        <image mode='widthFix' src='{{item}}'></image>
+    </view>
+  </view>
+  <view class='upload' bindtap='choose'>
+      <view>上传图片</view>
+  </view>
+  <button class='button font' form-type="submit">完成</button>
+</form>

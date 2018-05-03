@@ -1,0 +1,184 @@
+<view class="info font">
+  <!--头部图片  -->
+  <view class="info_bimg">
+    <image src="{{url}}{{chuangye.logo}}"></image>
+  </view>
+  <view class="info_banner">
+    <view class="banner_title">
+      <view class='banner_titlen'>{{chuangye.name}}</view>
+      <view class="menu_timeq" style="border:none;">
+        <image src="../images/jinqian@2x.png"></image>
+        <text class="menu_text" wx:if="{{chuangye.cost<=0}}">免费</text>
+        <text class="menu_text" wx:if="{{chuangye.cost>0}}">{{coll}}</text>
+      </view>
+    </view>
+    <view class="banner1 flex">
+      <view class="banner2">
+        <image src="../images/riqi@2x.png"></image>
+        <text class=' fon'>{{chuangye.created_time}}</text>
+      </view>
+      <view class="banner3">
+        <image class="banner4 fon" src="../images/liulan@2x.png"></image>
+        <text class=' fon'>{{chuangye.ll_num}}</text>
+        <image class="banner5 fon" src="../images/yizhuanfa.png"></image>
+        <text>{{chuangye.fx_num}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 活动详情 -->
+  <view class="menu">
+    <view class="menu_time">
+      <image src="../images/shijian@2x.png"></image>
+      <text>{{chuangye.start_time1}}至{{chuangye.end_time1}}</text>
+    </view>
+    <view class="flex menu_time2" catchtap="tomap">
+      <view class="menu_time3">
+        <image src="../images/didian@2x.png"></image>
+        <text>{{chuangye.address}}</text>
+      </view>
+      <image class="menu_time1" src="../images/Path@2x.png"></image>
+    </view>
+    <view class="menu_time" style="border:none;">
+      <image src="../images/renshu@2x.png"></image>
+      <view class="menu_time_ren">
+        <text>已报名</text>
+        <text wx:if="{{renshu==''||renshu==null}}">0</text>
+        <text wx:if="{{renshu!=''}}">{{renshu}}</text>
+        <text wx:if="{{chuangye.limit_num<=0}}">人/ 不限制名额</text>
+        <text wx:if="{{chuangye.limit_num>0}}">人/ 限制名额{{chuangye.limit_num}}</text>
+      </view>
+    </view>
+  </view>
+<!--该活动为平台发布，显示平台信息  -->
+  <view class="huiyi" bindtap='guanyu' wx:if="{{types==1}}">
+    <view class='huiyi_imgyang'>
+      <image class='huiyi_logo' src="{{url}}{{seller.img}}"></image>
+      <view class="huiyi_img1">
+        <view class='huiyi_flex2'>
+          <view>{{seller.name}}</view>
+          <view class='huiyi_back huiyi2' style='font-size:20rpx;color:#fff'>主办方</view>
+        </view>
+        <view style='width:600rpx;font-size:26rpx;'>{{seller.summary}}</view>
+      </view>
+    </view>
+    <view class="huiyi_xi" catchtap="call_phone">
+      <view>联系Ta</view>
+    </view>
+  </view>
+  <!--该活动为个人用户发布，显示此用户信息  -->
+  <view class="huiyi" bindtap='guanyu' wx:if="{{types==2}}">
+    <view class='menu_time_ren'>
+      <image class='huiyi_logo' src="{{url}}{{infos.logo}}"></image>
+      <view class="huiyi_img1">
+        <view class='huiyi_flex2'>
+          <view>{{infos.name}}</view>
+          <view class='huiyi_back'>
+            <image class='huiyi_vipimg' src='../images/rz.png'></image>
+          </view>
+          <view class='huiyi4' style='font-size:20rpx;' wx:if="{{rz==4||is_rz!=2}}">未认证</view>
+          <view class='huiyi2' style='font-size:20rpx;color:#fff' wx:if="{{is_rz==2}}">已认证</view>
+        </view>
+        <view style='width:600rpx;font-size:26rpx;'>{{infos.details}}</view>
+      </view>
+    </view>
+    <view class="huiyi_xi" catchtap="call_phone">
+      <view style='font-size:26rpx;'>联系Ta</view>
+    </view>
+  </view>
+  <!--  活动介绍  -->
+  <view class="content">
+    <view class="content_title">
+      <rich-text nodes="{{chuangye.content}}" />
+    </view>
+  </view>
+  <view class='imgs'>
+      <view wx:for="{{chuangye.arr}}" wx:if="{{chuangye.arr!=''}}">
+          <image bindtap="clickImage"  mode='widthFix' src='{{url}}{{item}}'></image>
+      </view> 
+      <view wx:if="{{chuangye.arr==''}}">
+          <image bindtap="clickImage"  mode='widthFix' src='{{url}}{{chuangye.logo}}'></image>
+      </view> 
+  </view>
+  <view class="section">
+    <view class="flex huodong">
+      <view class="section1">已报名
+        <text wx:if="{{renshu==''||renshu==null}}">0</text>
+        <text wx:if="{{renshu!=''}}">{{renshu}}</text>人</view>
+      <view bindtap="gelist" class="section2">
+        <view>更多报名</view>
+        <image src="../images/Pathlan@2x.png"></image>
+      </view>
+    </view>
+  </view>
+<!--报名信息  -->
+  <view class="section3">
+    <view class="section4" wx:for="{{nn}}" wx:key="{{item.value}}">
+      <block data-id="{{index}}" wx:for-index="index" wx:key="id">
+        <image src="{{item.logo}}"></image>
+        <view data-id="{{index}}" wx:for-index="index" wx:key="id">{{item.name}}</view>
+      </block>
+    </view>
+  </view>
+  <!--精选活动  -->
+  <view class="huodong1">
+    <view class="huodong">精选活动</view>
+    <view class="tuijian_title1" wx:for="{{tuijian}}" wx:key="{{item.value}}">
+      <view bindtap="tuijian" class="tuijian_banner" data-id="{{index}}" wx:for-index="index" wx:key="id">
+        <view>
+          <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+        </view>
+        <view class="tuijian_title3">
+          <view class="tuijian_title2">
+            <rich-text class="rich_one" nodes="{{item.name}}"></rich-text>
+          </view>
+          <view class="tuijian_title4">
+            <view class="tuijian_img4">
+              <view>
+                <image class="tuijian_img1" src="../images/riqi@2x.png"></image>
+                <text class="tuijian_img2">{{item.start_time}}开始</text>
+              </view>
+              <view class="tuijian_img3">
+                <image class="tuijian_img1" src="../images/didian@2x.png"></image>
+                <text>{{item.address}}</text>
+              </view>
+            </view>
+            <view class="flex">
+              <view>
+                <image class="tuijian_img1" src="../images/xianshang@2x.png"></image>
+                <text class="tuijian_img2">{{item.activity_type}}</text>
+              </view>
+              <view class="" wx:if="{{coll<=0}}">免费</view>
+              <view class="tuijian_jiage" wx:if="{{coll>0}}">¥{tuijian_jiage{item.cost}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--尾部  -->
+  <view class="footer">
+    <view class="footer1">
+      <text class="footer_text1">{{seller.copyright}}</text>
+    </view>
+  </view>
+
+  <!--固定部分  -->
+  <view class="collect">
+    <view class="collect_xing" bindtap="collect">
+      <image wx:if="{{toastHidden==true}}" class="collect_img" src="../images/weishoucang@2x.png"></image>
+      <image wx:else class="collect_img" src="../images/yishoucang@2x.png"></image>
+      <view wx:if="{{toastHidden==true}}">收藏</view>
+      <view wx:else>已收藏</view>
+    </view>
+    <view class="collect_xing collect_xing1" bindtap="showShare">
+      <image class="collect_img" src="../images/fenxiang@2x.png"></image>
+      <view>分享</view>
+      <button class="btn" open-type="share"></button>
+    </view>
+    <view wx:if="{{yijing=='已报名'}}" style='background-color:orange' class="collect_bao">{{yijing}}</view>
+    <view wx:if="{{bm==2}}" bindtap="infoYemian" class="collect_bao">{{yijing}}</view>
+    <view wx:if="{{bm==1}}" class="collect_bao">{{yijing}}</view>
+    <view wx:if="{{bm==3}}" style="background:#ccc;" class="collect_bao">{{yijing}}</view>
+  </view>
+</view>

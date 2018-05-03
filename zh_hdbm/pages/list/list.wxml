@@ -1,0 +1,13 @@
+
+<view class="list1" wx:for="{{list}}">
+  <view class="list font">
+    <view class="list_content">
+      <view class="list_img">
+        <image src="{{item.logo}}"></image>
+      </view>
+      <view class="list_text">{{item.name}}</view>
+    </view>
+    <view class='list_tel'>{{item.tel}}</view>
+    <view class="list_time">报名时间：{{time}}</view>
+  </view>
+</view>

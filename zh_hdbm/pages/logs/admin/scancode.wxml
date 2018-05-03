@@ -1,0 +1,18 @@
+<!--zh_hdbm/pages/logs/admin/scancode.wxml-->
+ <view class='container' wx:if="{{success==null}}">
+    <view>是否核销</view>
+    <button bindtap='transmit'>确定</button>
+</view> 
+<view class='success rel' wx:if="{{success==1}}">
+    <view class='ab udlr'>
+        <icon type="success" color='#43B1FF' size="100"/>
+        <view bindtap='success'>核销成功</view>
+    </view>
+</view>
+<view class='success rel' wx:if="{{success==''||success==2}}">
+    <view class='ab udlr'>
+        <icon type="cancel" color='#43B1FF' size="100"/>
+        <view bindtap='success'>核销失败</view>
+    </view>
+</view>
+ 

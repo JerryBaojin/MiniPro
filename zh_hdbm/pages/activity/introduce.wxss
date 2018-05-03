@@ -1,0 +1,58 @@
+/* zh_hdbm/pages/activity/introduce.wxss */
+page{
+  background: #e5e5e5;
+}
+.container{
+  width: 100%;
+  height: auto;
+  min-height: 500rpx;
+  background: #fff;
+  margin-top:10rpx;
+   padding-top: 20rpx; 
+  position: relative;
+}
+.font {
+  font-size: 微软雅黑;
+}
+
+.container textarea{
+  width: 90%;
+  font-size: 26rpx;
+  margin: 0 auto 0;
+  line-height: 40rpx;
+}
+.button{
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #41b0ff;
+  color: #fff;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+.introduce_img{
+  width: 90%;
+  height: auto;
+  margin: 0 auto 0;
+}
+.introduce_img image{
+  width: 100%;
+}
+.upload{
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  bottom: 0;
+}
+.upload view{
+  width: auto;
+  display: inline-block;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+  background: #43B1FF;
+  color: #fff;
+  margin-left:5%;
+  padding: 0rpx 20rpx;
+}

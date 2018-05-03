@@ -1,0 +1,28 @@
+<!--zh_hdbm/pages/logs/select/select.wxml-->
+<view class="font">
+  <view class="select">
+
+    <view class="select_one" bindtap="geren">      
+      <image class="select_one_img" src="../../images/renzheng4.png"></image>
+      <view class="select_one_left">
+        <view class="select_middle">
+          <view class="select_one_title">个人认证</view>
+          <view class="select_one_content">适用于以个人名义举办活动的主办方</view>
+        </view>
+        <image class="right_arr" src="../../images/you.png"></image>
+      </view>      
+    </view>
+
+    <view class="select_one" bindtap="prise">      
+      <image class="select_one_img" src="../../images/renzheng1.png"></image>
+      <view class="select_one_left2">
+        <view class="select_middle">
+          <view class="select_one_title">企业认证</view>
+          <view class="select_one_content">适用于以企业名义举办活动的主办方，包括国企、民企、个体工商户等。</view>
+        </view>
+        <image class="right_arr" src="../../images/you.png"></image>
+      </view>      
+    </view>
+
+  </view>
+</view>

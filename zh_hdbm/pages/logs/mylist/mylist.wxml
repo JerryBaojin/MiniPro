@@ -1,0 +1,231 @@
+<!--index.wxml-->
+<view class="container font">
+  <view class="page">
+    <view class="page__bd">
+      <view class="weui-tab">
+        <view class="weui-navbar">
+          <block wx:for="{{tabs}}" wx:key="*this">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+              <view class="weui-navbar__title">{{item}}</view>
+            </view>
+          </block>
+          <view class="weui-navbar__slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        </view>
+        <view class="weui-tab__panel">
+
+          <!--全部  -->
+          <view class="weui-tab__content mylist_back" hidden="{{activeIndex != 0}}">
+            <view wx:if="{{check==null||check==''}}">
+              <view class="mylist_back1">
+                <image class="mylist_back2" src="../../images/list.png"></image>
+              </view>
+              <view class='aaa'>还没有相关订单</view>
+              <view class='bbb'>发现好活动 ></view>
+            </view>
+            <view class="classname" wx:if="{{check!=null||check!=''}}" wx:for="{{check}}" wx:key="{{item.value}}">
+              <view class="list_enroll" data-id="{{item.id}}" data-bm_id="{{item.bm_id}}" bindtap="details">
+                <!--一个订单列表开始  -->
+                <view class="tuijian_title1">
+                  <view class="time">{{item.created_time}}</view>
+                  <view class="tuijian_banner">
+                    <view>
+                      <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+                    </view>
+                    <view class="tuijian_title3">
+                      <view class="tuijian_title2">
+                         <view class="rich_one">{{item.name}}<text wx:if="{{item.status==1}}" style='float:right;font-size:26rpx;color:#999'>待参与</text><text wx:if="{{item.status==2}}" style='float:right;font-size:26rpx;color:orange'>已完成</text></view>
+                      </view>
+                      <view class="tuijian_title4">
+                        <view class="tuijian_img4">
+                          <view>
+                            <image class="tuijian_img1" src="../../images/riqi@2x.png"></image>
+                            <text class="tuijian_img2">{{item.start_time}} 开始</text>
+                          </view>
+                          <view class="tuijian_img3">
+                            <image class="tuijian_img1" src="../../images/didian@2x.png"></image>
+                            <text>{{item.city}}</text>
+                          </view>
+                        </view>
+                        <view class="flex1">
+                          <view>
+                            <image class="tuijian_img1" src="../../images/xianshang@2x.png"></image>
+                            <text class="tuijian_img2" wx:if="{{item.activity_type==2}}">线下活动</text>
+                            <text class="tuijian_img2" wx:if="{{item.activity_type==1}}">线上活动</text>
+                          </view>
+                           <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view> 
+                          <view class="tuijian_jiage" wx:else>免费</view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <!--一个订单列表结束  -->
+
+              </view>
+            </view>
+          </view>
+          <!--待参与  -->
+          <view class="weui-tab__content mylist_back" hidden="{{activeIndex != 1}}">
+
+            <view wx:if="{{payment==null||payment==''}}">
+              <view class="mylist_back1">
+                <image class="mylist_back2" src="../../images/list.png"></image>
+              </view>
+              <view class='aaa'>还没有带参与的订单</view>
+              <view class='bbb'>发现好活动 ></view>
+            </view>
+            <view class="classname" wx:for="{{payment}}" wx:key="{{item.value}}">
+              <view class="list_enroll" data-id="{{item.id}}" data-bm_id="{{item.bm_id}}" bindtap="details_dai">
+                <!--一个订单列表开始  -->
+                <view class="tuijian_title1">
+                  <view class="time">{{item.created_time}}</view>
+                  <view class="tuijian_banner">
+                    <view>
+                      <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+                    </view>
+                    <view class="tuijian_title3">
+                      <view class="tuijian_title2">
+                         <view class="rich_one">{{item.name}}<text wx:if="{{item.status==1}}" style='float:right;font-size:26rpx;color:#999'>待参与</text><text wx:if="{{item.status==2}}" style='float:right'>已完成</text></view>
+                      </view>
+                      <view class="tuijian_title4">
+                        <view class="tuijian_img4">
+                          <view>
+                            <image class="tuijian_img1" src="../../images/riqi@2x.png"></image>
+                            <text class="tuijian_img2">{{item.start_time}} 开始</text>
+                          </view>
+                          <view class="tuijian_img3">
+                            <image class="tuijian_img1" src="../../images/didian@2x.png"></image>
+                            <text>{{item.city}}</text>
+                          </view>
+                        </view>
+                        <view class="flex1">
+                          <view>
+                            <image class="tuijian_img1" src="../../images/xianshang@2x.png"></image>
+                            <text class="tuijian_img2" wx:if="{{item.activity_type==2}}">线下活动</text>
+                            <text class="tuijian_img2" wx:if="{{item.activity_type==1}}">线上活动</text>
+                          </view>
+                           <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view> 
+                          <view class="tuijian_jiage" wx:else>免费</view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <!--一个订单列表结束  -->
+
+              </view>
+            </view>
+          </view>
+
+          <!--退款  -->
+          <view class="mylist_back" hidden="{{activeIndex != 2}}">
+
+            <view wx:if="{{Already==null||Already==''}}">
+              <view class="mylist_back1">
+                <image class="mylist_back2" src="../../images/list.png"></image>
+              </view>
+              <view class='aaa'>还没有退款的订单</view>
+              <view class='bbb'>发现好活动 ></view>
+            </view>
+            <view class="classname" wx:for="{{Already}}" wx:key="{{item.value}}">
+              <view class="list_enroll" data-id="{{item.id}}" data-bm_id="{{item.bm_id}}" bindtap="details_tui">
+                <!--一个订单列表开始  -->
+                <view class="tuijian_title1">
+                  <view class="time">{{item.created_time}}</view>
+                  <view class="tuijian_banner">
+                    <view>
+                      <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+                    </view>
+                    <view class="tuijian_title3">
+                      <view class="tuijian_title2">
+                         <view class="rich_one">{{item.name}}<text wx:if="{{item.status==1}}" style='float:right;font-size:26rpx;color:#999'>待参与</text><text wx:if="{{item.status==2}}" style='float:right'>已完成</text></view>
+                      </view>
+                      <view class="tuijian_title4">
+                        <view class="tuijian_img4">
+                          <view>
+                            <image class="tuijian_img1" src="../../images/riqi@2x.png"></image>
+                            <text class="tuijian_img2">{{item.start_time}} 开始</text>
+                          </view>
+                          <view class="tuijian_img3">
+                            <image class="tuijian_img1" src="../../images/didian@2x.png"></image>
+                            <text>{{item.city}}</text>
+                          </view>
+                        </view>
+                        <view class="flex1">
+                          <view>
+                            <image class="tuijian_img1" src="../../images/xianshang@2x.png"></image>
+                            <text class="tuijian_img2" wx:if="{{item.activity_type==2}}">线下活动</text>
+                            <text class="tuijian_img2" wx:if="{{item.activity_type==1}}">线上活动</text>
+                          </view>
+                           <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view> 
+                          <view class="tuijian_jiage" wx:else>免费</view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <!--一个订单列表结束  -->
+
+              </view>
+            </view>
+          </view>
+
+          <!--已完成  -->
+          <view class="mylist_back" hidden="{{activeIndex !=3}}">
+
+            <view wx:if="{{cancel==null||cancel==''}}">
+              <view class="mylist_back1">
+                <image class="mylist_back2" src="../../images/list.png"></image>
+              </view>
+              <view class='aaa'>还没有完成的订单</view>
+              <view class='bbb'>发现好活动 ></view>
+            </view>
+
+            <view class="classname" wx:for="{{cancel}}" wx:key="{{item.value}}">
+              <view class="list_enroll" data-id="{{item.id}}" data-bm_id="{{item.bm_id}}" bindtap="details_wan">
+                <!--一个订单列表开始  -->
+                <view class="tuijian_title1">
+                  <view class="time">{{item.created_time}}</view>
+                  <view class="tuijian_banner">
+                    <view>
+                      <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+                    </view>
+                    <view class="tuijian_title3">
+                      <view class="tuijian_title2">
+                        <view class="rich_one">{{item.name}}</view>
+                      </view>
+                      <view class="tuijian_title4">
+                        <view class="tuijian_img4">
+                          <view>
+                            <image class="tuijian_img1" src="../../images/riqi@2x.png"></image>
+                            <text class="tuijian_img2">{{item.start_time}} 开始</text>
+                          </view>
+                          <view class="tuijian_img3">
+                            <image class="tuijian_img1" src="../../images/didian@2x.png"></image>
+                            <text>{{item.city}}</text>
+                          </view>
+                        </view>
+                        <view class="flex1">
+                          <view>
+                            <image class="tuijian_img1" src="../../images/xianshang@2x.png"></image>
+                            <text class="tuijian_img2" wx:if="{{item.activity_type==2}}">线下活动</text>
+                            <text class="tuijian_img2" wx:if="{{item.activity_type==1}}">线上活动</text>
+                          </view>
+                           <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view> 
+                          <view class="tuijian_jiage" wx:else>免费</view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <!--一个订单列表结束  -->
+
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+<!--zh_hdbm/pages/admin/edit/edit.wxml-->
+<view class="font">
+
+  <view class="edit">
+    <view class="edit_header">
+      <view class="edit_left">
+        <view class="edit_box">
+          <image class="edit_box_img" src="../../images/sousuo@2x.png"></image>
+          <input bindinput="sousuo" bindblur="bindblur" class="edit_input" type="text" placeholder="手机/报名人" placeholder-style="color:#999;"/>
+        </view>      
+      </view>
+      <view class="edit_right">
+        <view class="select">筛选</view>
+        <image class="edit_box_img" src="../../images/select.png"></image>
+      </view>
+    </view>
+    <view class="search">
+      <view class="classname" hidden="{{hidden}}" bindtap="infoYemian1" wx:for="{{sousuo}}" data-id="{{index}}" wx:for-index="index" wx:key="id">{{name}}</view>
+    </view>
+  </view>
+
+  <view class="ticket">
+    <view class="top">
+      <view>{{time}}</view>
+      <view>待验票</view>
+    </view>
+    <view class="bottom" bindtap="Acinfo" data-id="{{item.id}}" wx:for="{{ren}}">
+      <image class="ticket_img" src="{{item.img}}"></image>
+      <view class="ticket_left">        
+        <view class="ticket_right">
+          <view>{{item.xm}}</view>
+          <view class="ticket_fei">{{item.cerated_time}}</view>
+        </view>
+        <view class="ticket_right">
+          <view class="ticket_fei">电话：{{item.phone}}</view>
+          <view class="ticket_fei" wx:if="{{item.status==1}}">待验票</view>
+          <view class="ticket_fei" wx:if="{{item.status==2}}">已核销</view>
+        </view>
+      </view>      
+    </view>
+
+  </view>
+
+  <!--footer尾部开始  -->
+  
+  <!--footerweibu结束  -->
+</view>

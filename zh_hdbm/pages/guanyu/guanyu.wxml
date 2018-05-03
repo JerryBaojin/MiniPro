@@ -1,0 +1,18 @@
+
+<view class="font guanyu1">
+  <!-- <view class="guanyu">{{seller.name}}</view> -->
+  <view class="guanyu_text">
+    <view class="guanyu_text">
+    <rich-text nodes="{{seller}}"/>
+    </view>
+  </view>
+
+
+<!--尾部  -->
+  <view class="footer">
+    <view class="footer1">
+       <!-- <image src="../images/zhihui@2x.png" class="footer_img"></image>  -->
+      <!-- <text class="footer_text1">{{seller.copyright}}</text> -->
+    </view>
+  </view>
+</view>

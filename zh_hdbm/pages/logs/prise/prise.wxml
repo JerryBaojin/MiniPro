@@ -1,0 +1,74 @@
+<!--zh_hdbm/pages/logs/prise/prise.wxml-->
+<view class="font">
+<form bindsubmit="formSubmit" bindreset="formReset" report-submit='true' >
+  <view class="geren_headerp">
+    <view class="geren_header_onep">
+      <view class="header_leftp">企业全称:</view>
+      <input class="header_inputp" name="quan"  bindblur="inpunt1" type="text" placeholder-style="color:#ccc;"/>
+    </view>
+    <!-- <view class="geren_header_onep">
+      <view class="header_leftp">工商执照注册码:</view>
+      <input class="header_input2p" name="zhuce" type="text" placeholder-style="color:#ccc;" bindinput="bian2" />
+    </view> -->
+    <view class="geren_header_onep">
+      <view class="header_leftp">法定代表人姓名:</view>
+      <input class="header_input2p" name="faname" bindblur="inpunt2" type="text" placeholder-style="color:#ccc;" />
+    </view>
+  </view>
+
+  <view class="geren_header">
+    <!-- <view class="geren_header_one">
+      <view class="header_left">真实姓名:</view>
+      <input type="text" placeholder="请输入你的真实姓名" name="zhen" placeholder-style="color:#ccc;" bindinput="bian4" />
+    </view> -->
+    <view class="geren_header_one">
+      <view class="header_left">证件类型:</view>
+      <view>身份证</view>
+    </view>
+    <view class="geren_header_one">
+      <view class="header_left">证件号码:</view>
+      <input type="number" placeholder="请输入你的证件号码"  bindblur="inpunt3" name="numb" placeholder-style="color:#ccc;" />
+    </view>
+  </view>
+
+  <view class="banner">
+    <view class="banner_left"  bindtap="choose">
+      <view class="benner_title">证件正面照片</view>
+     <view class="banner_box rel">
+          <image class="camera" wx:if="{{logo==null}}" src="../../images/renzheng3.png"></image>
+          <image class="camera2" wx:if="{{logo!=null}}" src="{{logo}}"></image>
+          <view wx:if="{{logo==null}}">点击上传</view>
+        </view>
+    </view>
+    <view class="banner_right" bindtap="choose1">
+      <view class="benner_title">证件背面照片</view>
+      <view class="banner_box rel">
+          <image class="camera" wx:if="{{logos==null}}" src="../../images/renzheng3.png"></image>
+          <image class="camera2" wx:if="{{logos!=null}}" src="{{logos}}"></image>
+          <view wx:if="{{logos==null}}">点击上传</view>
+        </view>
+    </view>
+  </view>
+
+  <view class="bannerp">
+    <view class="header_leftp">工商营业执照照片</view>
+    <view class="banner_leftp">
+     <view class="banner_box rel"  bindtap="choose2">
+          <image class="camera" wx:if="{{logoss==null}}" src="../../images/renzheng3.png"></image>
+          <image class="camera2" wx:if="{{logoss!=null}}" src="{{logoss}}"></image>
+          <view wx:if="{{logoss==null}}">点击上传</view>
+        </view>
+    </view>
+  </view>
+
+  <view class="agree">
+    <icon type="success" color="#0F9AE8" size="16" />
+    <view class="agree_text">同意<text class="agree_text2" bindtap='identity'>《身份认证服务协议》</text></view>
+  </view>
+
+  <view class="footerp">
+    <button class="footer_btn" style='background:#41b0ff;color:#fff' wx:if="{{in1==true&&in2==true&&in3==true&&log==true&&logg==true&&lo==true}}" form-type='submit' bindtap="select">提交认证</button>
+    <button class="footer_btn" wx:if="{{in1!=true||in2!=true||in3!=true||log!=true||logg!=true||lo!=true}}">提交认证</button>
+  </view>
+  </form>
+</view>

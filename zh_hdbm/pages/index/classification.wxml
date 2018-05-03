@@ -1,0 +1,66 @@
+<view class="tuijian">
+  <view class="tuijian_title1" wx:for="{{list}}">
+    <view wx:if="{{types!=1}}" bindtap="infoYemian" class="tuijian_banner" data-id="{{index}}" wx:for-index="index" wx:key="id">
+      <view>
+        <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+      </view>
+      <view class="tuijian_title3">
+        <view class="tuijian_title2">
+          <view class="rich_one">{{item.name}}</view>
+        </view>
+        <view class="tuijian_title4">
+          <view class="tuijian_img4">
+            <view>
+              <image class="tuijian_img1" src="../images/riqi@2x.png"></image>
+              <text class="tuijian_img2">{{item.start_time}} 开始</text>
+            </view>
+            <view class="tuijian_img3">
+              <image class="tuijian_img1" src="../images/didian@2x.png"></image>
+              <text>{{item.city}}</text>
+            </view>
+          </view>
+          <view class="flex1">
+            <view>
+              <image class="tuijian_img1" src="../images/xianshang@2x.png"></image>
+              <text class="tuijian_img2" wx:if="{{item.activity_type==1}}">线上活动</text>
+              <text class="tuijian_img2" wx:if="{{item.activity_type==2}}">线下活动</text>
+            </view>
+            <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view>
+            <view class="tuijian_jiage" wx:if="{{item.cost<=0}}">免费</view>
+          </view>
+        </view>
+      </view>
+    </view>
+     <view wx:if="{{types==1}}" bindtap="manage" class="tuijian_banner" data-id="{{index}}" data-hdid="{{item.id}}" wx:for-index="index" wx:key="id">
+      <view>
+        <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+      </view>
+      <view class="tuijian_title3">
+        <view class="tuijian_title2">
+          <view class="rich_one">{{item.name}}</view>
+        </view>
+        <view class="tuijian_title4">
+          <view class="tuijian_img4">
+            <view>
+              <image class="tuijian_img1" src="../images/riqi@2x.png"></image>
+              <text class="tuijian_img2">{{item.start_time}} 开始</text>
+            </view>
+            <view class="tuijian_img3">
+              <image class="tuijian_img1" src="../images/didian@2x.png"></image>
+              <text>{{item.city}}</text>
+            </view>
+          </view>
+          <view class="flex1">
+            <view>
+              <image class="tuijian_img1" src="../images/xianshang@2x.png"></image>
+              <text class="tuijian_img2" wx:if="{{item.activity_type==1}}">线上活动</text>
+              <text class="tuijian_img2" wx:if="{{item.activity_type==2}}">线下活动</text>
+            </view>
+            <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view>
+            <view class="tuijian_jiage" wx:if="{{item.cost<=0}}">免费</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

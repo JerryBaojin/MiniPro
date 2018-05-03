@@ -1,0 +1,14 @@
+/* zh_hdbm/pages/logs/admin/write.wxss */
+view{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 300rpx;
+}
+button{
+  width: 90%;
+  background: #43B1FF;
+  color: #fff;
+}
+button:after{
+    border: none;
+}

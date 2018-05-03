@@ -1,0 +1,5 @@
+/* zh_hdbm/pages/activity/Agreement.wxss */
+.container{
+  width: 95%;
+  height: 100%;margin: 0 auto;
+}

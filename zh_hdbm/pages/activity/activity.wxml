@@ -1,0 +1,284 @@
+<!--zh_hdbm/pages/activity/activity.wxml-->
+<view class='xieyi' wx:if="{{Agreement==true}}">
+    <view  bindtap='Agreement'></view>
+    <view class='ab udlr'><rich-text nodes="{{nodes}}"></rich-text></view>
+</view>
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class='container font'>
+    <!--上传图片部分  -->
+    <view class='upload rel'>
+      <view class="classname" wx:if="{{logo==null}}">
+        <view class='upload_title'>上传宣传图，建议长宽尺寸 （宽750px，高250px）</view>
+        <view class='upload_img rel' bindtap="choose">
+          <view class='ab udlr'></view>
+          <view class='ab udlr'></view>
+        </view>
+      </view>
+      <image mode="aspectFill" wx:if="{{logo!=null}}" src="{{logo}}"></image>
+      <view class="replace" wx:if="{{logo!=null}}">
+        <view class="classname"></view>
+        <view class="classname" bindtap="choose">更换宣传图</view>
+      </view>
+    </view>
+    <!--活动主体部分  -->
+    <view class='activity fon'>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodong.png'></image>
+          </view>
+          <view class='activity_text'>活动名称</view>
+          <view class='activity_prompt'>
+            <input name="name" maxlength="20" placeholder='不超过20个字' placeholder-style="font-family:'微软雅黑';color:#999"></input>
+          </view>
+        </view>
+      </view>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongshijian-.png'></image>
+          </view>
+          <view class='activity_text'>活动开始</view>
+          <picker class="choice" mode="date" value="{{dates}}" bindchange="startDateChange">
+            <view>
+              <text class="co" wx:if="{{dates==null}}">开始日期</text>
+              <text wx:if="{{dates!=null}}">{{dates}}</text>
+            </view>
+          </picker>
+          <picker class='choice' mode="time" value="{{time}}" bindchange="bindstartTimeChange">
+            <view>
+              <text wx:if="{{start_time==null}}" class='co'>开始时间</text>
+              <text wx:if="{{start_time!=null}}">{{start_time}}</text>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongshijian-.png'></image>
+          </view>
+          <view class='activity_text'>活动结束</view>
+          <picker class='choice' mode="date" value="{{end_date}}" bindchange="endDateChange">
+            <view>
+              <text class="co" wx:if="{{end_date==null}}">结束日期</text>
+              <text wx:if="{{end_date!=null}}">{{end_date}}</text>
+            </view>
+          </picker>
+          <picker class='choice' mode="time" value="{{end_time}}" bindchange="bindendTimeChange">
+            <view>
+              <text class="co" wx:if="{{end_time==null}}">结束时间</text>
+              <text wx:if="{{end_time!=null}}">{{end_time}}</text>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='activity_theme ma rel'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongzuzhi.png'></image>
+          </view>
+          <view class='activity_text'>活动人数</view>
+          <view class='activity_prompt'>
+            <input type='number' name="num" placeholder='人数限制' placeholder-style="font-family:'微软雅黑';color:#999"></input>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--活动类型  -->
+    <view class='activity_type fon'>线上线下活动，显示在精选活动列表中</view>
+    <view class='activity fon'>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongfenlei.png'></image>
+          </view>
+          <view class='activity_img1'>
+            <image mode='widthFix' src='../images/huise@2x.png'></image>
+          </view>
+          <view class='activity_text'>活动范围</view>
+          <picker bindchange="bindPickerChanges" value="{{index}}" range="{{arrays}}">
+            <view class='activity_prompt'>
+              {{arrays[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongfenlei.png'></image>
+          </view>
+           <view class='activity_img1'>
+            <image mode='widthFix' src='../images/huise@2x.png'></image>
+          </view>
+          <view class='activity_text'>活动类型</view>
+          <picker bindchange="bindacChanges" value="{{inde}}" range="{{ac_type}}">
+            <view class='activity_prompt'>
+              {{ac_type[inde]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongdidian.png'></image>
+          </view>
+           <view class='activity_img1'>
+            <image mode='widthFix' src='../images/huise@2x.png'></image>
+          </view>
+          <view class='activity_text'>活动城市</view>
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" range="{{customItem}}">
+            <view class='activity_prompt'>
+              {{region[1]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongdidian.png'></image>
+          </view>
+          <view class='activity_text'>活动地点</view>
+          <view class='activity_prompt' bindtap='map'>
+            <text class="co" wx:if='{{address==null}}'>点击选择活动地点</text>
+            <text wx:if='{{address!=null}}'>{{address}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongfeiyong.png'></image>
+          </view>
+          <view class='activity_text'>活动费用</view>
+          <view class='activity_prompt'>
+            <input type='digit' name="money" placeholder='活动费用' placeholder-style="font-family:'微软雅黑';color:#999"></input>
+          </view>
+        </view>
+      </view>
+      <view class='activity_theme ma rel bono'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongjianjie.png'></image>
+          </view>
+          <view class='activity_text'>活动介绍</view>
+          <view class='activity_prompt' bindtap='introduce'>
+            <text class='co' wx:if="{{text==''||text==null}}">活动介绍</text>
+            <text wx:if="{{text!=''||text!=null}}">{{text}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='activity_theme ma rel'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/shouji.png'></image>
+          </view>
+          <view class='activity_text'>验证手机</view>
+          <view class='activity_prompt'>
+            <text class='co' wx:if="{{num!=null}}">{{num}}</text>
+            <button open-type="getPhoneNumber" wx:if="{{num==null}}" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
+          </view>
+        </view>
+      </view> -->
+    </view>
+    <!--设置活动咨询方式  -->
+    <view class='activity_type fon'>设置活动咨询方式</view>
+    <view class='activity fon'>
+      <view class='activity_theme ma rel'>
+        <view class='ab udlr'>
+          <view class='activity_img rel'>
+            <image mode='widthFix' src='../images/shouji.png'></image>
+          </view>
+          <view class='activity_text'>咨询电话</view>
+          <view class='activity_prompt'>
+            <input type='number' name="tel" placeholder='手机号/座机号 （区号·座机号）' placeholder-style="font-family:'微软雅黑';color:#999"></input>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--设置报名截止时间  -->
+     <view class='activity_type fon'>设置报名截止时间</view>
+    <view class='activity fon'>
+      <view class='activity_theme ma rel'>
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='../images/huodongshijian-.png'></image>
+          </view>
+          <view class='activity_sign' wx:if="{{value==null||value==true}}">活动结束前均可报名</view>
+          <view class='activity_sign' wx:if="{{value==false}}">填写报名时间</view>
+        </view>
+        <switch class='switch ab ud' checked bindchange="switch1Change" />
+      </view>
+      <view class='time ma rel' wx:if="{{value==false}}">
+      <!--报名开始时间  -->
+        <picker class='ab ud' mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view>
+            <text wx:if="{{date==null}}" class='co'>请选择报名开始日期</text>
+            <text wx:if="{{date!=null}}">{{date}}</text>
+          </view>
+        </picker>
+        <!--报名开始时间  -->
+        <picker class='ab ud' mode="time" value="{{time}}" bindchange="bindTimeChange">
+          <view>
+            <text wx:if="{{time==null}}" class='co'>请选择报名开始时间</text>
+            <text wx:if="{{time!=null}}">{{time}}</text>
+          </view>
+        </picker>
+      </view>
+      <!--报名结束日期  -->
+      <view class='time ma rel' wx:if="{{value==false}}">
+          <picker class='ab ud' mode="date" value="{{stdate}}" bindchange="stDateChange">
+          <view>
+            <text wx:if="{{stdate==null}}" class='co'>请选择报名结束日期</text>
+            <text wx:if="{{stdate!=null}}">{{stdate}}</text>
+          </view>
+        </picker>
+        <picker class='ab ud' mode="time" value="{{entime}}" bindchange="edTimeChange">
+          <view>
+            <text wx:if="{{entime==null}}" class='co'>请选择报名结束时间</text>
+            <text wx:if="{{entime!=null}}">{{entime}}</text>
+          </view>
+        </picker>
+      </view>
+    </view> 
+    <!--设置自主报名方式  -->
+    <view class='activity_type fon'>设置用户报名时的必填项</view>
+    <view class='activity fon'>
+      <view class='activity_theme ma rel bono' wx:for="{{customs}}">
+        <view class='ab udlr'>
+          <view class='activity_img'>
+            <image mode='widthFix' src='{{item.img}}'></image>
+          </view>
+          <view class='activity_text'>{{item.name}}</view>
+          <view class='activity_delete' bindtap="deletes" data-index="{{index}}" wx:if="{{index>=2}}">删除</view>
+        </view>
+      </view>
+    </view>
+    <view class='activity_custom fon' bindtap='add'>添加自定义填选项</view>
+    <view class='activity_type fon'>点击发布表示您同意
+      <text bindtap='Agreement'>《用户使用协议》</text>
+    </view>
+    <button class='button' form-type="submit">发布</button>
+  </view>
+  <view class='title font' wx:if="{{close==true}}">{{title}}</view>
+  <form bindsubmit="sub">
+    <view class='add font' wx:if="{{prompt==true}}">
+      <view class='header'>
+        <view>
+          <button bindtap='determine'>取消</button>
+          <button formType="submit">
+            确定
+          </button>
+        </view>
+      </view>
+      <view class='add_title'>添加自定义填写项</view>
+      <view class='add_inpu'>
+        <input maxlength="6" name="add" placeholder='单行文字报名填写项,请输入名称,不超过6个字' placeholder-style="font-family:'微软雅黑';color:#999"></input>
+      </view>
+      <view class='add_prompt'>需要报名者填写文字较少的信息,如微信号、邮箱、职位等,请使用本功能</view>
+    </view>
+  </form>
+</form>

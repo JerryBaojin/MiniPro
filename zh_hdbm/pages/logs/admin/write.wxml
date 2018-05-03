@@ -1,0 +1,4 @@
+<!--zh_hdbm/pages/logs/admin/write.wxml-->
+<view>
+    <button bindtap='hxcode'>是否成为核销员</button>
+</view>  

@@ -1,0 +1,86 @@
+<!--zh_hdbm/pages/logs/authen/authen.wxml-->
+<view class="font">
+  <view class="authen">
+   <view class="authen_header" wx:if="{{rz==4}}">
+      <icon type="warn" size="25" />
+      <view class="header_text">未认证</view>
+    </view>
+     <view class="authen_header" wx:if="{{is_rz==1}}">
+      <icon type="warn" size="25" />
+      <view class="header_text">正在审核中</view>
+    </view>
+    <view class="authen_header" wx:if="{{is_rz==2}}">
+      <icon type="success" size="25" color="orange" />
+      <view class="header_text">已认证</view>
+    </view>
+    <view class="authen_header" wx:if="{{is_rz==3}}">
+      <icon type="waiting" size="25" />
+      <view class="header_text">认证已被拒绝</view>
+    </view>
+    <view class="header_bot">为了保障和享有更多权益，请先认证</view>
+  </view>
+
+  <view class="section">
+    <view class="section_header">
+      <image class="section_header_img" src="../../images/youbian.png"></image>
+      <view class="section_header_text">认证介绍</view>
+      <image class="section_header_img" src="../../images/fangkuai.png"></image>
+    </view>
+
+    <view class="section_footer">
+      <!--全新认证  -->
+      <view class="section_one">
+        <image class="section_one_img" src="../../images/tixi.png"></image>
+        <view class="section_one_right">
+          <view class="right_title">全新认证体系</view>
+          <view class="right_content">提供更安全、更严格的真实性认证，更好的保护主办方及参与者的合法权益。</view>
+        </view>
+      </view>
+
+      <!-- 提现要求 -->
+      <view class="section_one">
+        <image class="section_one_img" src="../../images/xianjin.png"></image>
+        <view class="section_one_right">
+          <view class="right_title">提现要求</view>
+          <view class="right_content">为了主办方资金安全，只有身份认证完成后，方可进行提现。</view>
+        </view>
+      </view>
+
+      <!-- 认证特有标识 -->
+      <view class="section_one">
+        <image class="section_one_img" src="../../images/yaoqiu.png"></image>
+        <view class="section_one_right">
+          <view class="right_title">认证特有标识</view>
+          <view class="right_content">认证完成，用户将在个人中心看到认证特有的标识。</view>
+        </view>
+      </view>
+
+      <!-- 认证特有标识 -->
+      <view class="section_one">
+        <image class="section_one_img" src="../../images/youxiao.png"></image>
+        <view class="section_one_right">
+          <view class="right_title">认证有效期</view>
+          <view class="right_content">从审核成功之日起，一年内有效。</view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <view class="section_state2">
+    <view class="section_state">
+      <view class="section_header">
+        <image class="section_header_img" src="../../images/youbian.png"></image>
+        <view class="section_header_text">认证申明</view>
+        <image class="section_header_img" src="../../images/fangkuai.png"></image>
+      </view>
+      <view class="section_two">
+        <view class="section_one_yuan"></view>
+        <view class="right_content2">认证成功即拥有一年的认证有效期。每年即将到期时，都需要重新提交认证资料，审核通过后，有效期自动延长一年。如过期，则认证失效，原认证权益全部失效。</view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="footer_btn" bindtap="select" wx:if="{{rz==4||is_rz==3}}">立即认证</view>
+    <view class="footer_btn" style='background:#ccc;border:1rpx solid #ccc' wx:if="{{is_rz==2||is_rz==1}}">立即认证</view>
+  </view>
+</view>

@@ -1,0 +1,100 @@
+/* zh_hdbm/pages/admin/edit/edit.wxss */
+.edit{
+  background-color: white;
+  padding: 20rpx 30rpx;  
+  font-size: 26rpx;
+}
+.edit_header{
+  display: flex;
+}
+.search{
+  color: #333;
+  margin-left: 50rpx;
+}
+.edit_left{
+  width: 95%;
+  border-right: 1rpx solid #eee;
+  height: 50rpx;
+  padding-right: 30rpx;
+}
+.edit_right{
+  width: 15%;
+  justify-content: center;
+  align-items: center;
+  height: 50rpx;
+  display: flex;
+}
+.edit_box{
+  width: 100%;
+  height: 50rpx;
+  border-radius: 10rpx;
+  background-color: #EEEEEE;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+}
+.edit_box_img{
+  width: 30rpx;
+  height: 30rpx;
+}
+.edit_input{
+  font-size: 24rpx;
+  width: 300rpx;
+  height: 50rpx;
+  margin-left: 30rpx;
+}
+.select{
+  color: #333;
+}
+.ticket{
+  padding: 0rpx 30rpx;
+  background-color: white;
+  margin-top: 20rpx;
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+.ticket_img{
+  width: 80rpx;
+  height: 80rpx;
+  background-color: pink;
+  border-radius: 50%;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  font-size: 24rpx;
+  color: #999;
+  height: 70rpx;
+}
+.bottom{
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.ticket_right{
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ticket_left{
+  margin-left: 30rpx;
+  width: 83%;
+}
+.ticket_flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.ticket_fei{
+  font-size: 24rpx;
+  color: #999;
+}
+.ticket_money{
+  color: #41B0FF;
+  font-size: 24rpx;
+}

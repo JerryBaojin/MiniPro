@@ -1,0 +1,102 @@
+
+/*————————推荐板块  */
+.tuijian{
+  background-color: white;
+  margin-top: 10rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+  border-top: 1rpx solid #E5E5E5;
+}
+.tuijian_title{
+  height: 90rpx;
+  font-size: 34rpx;
+  color: #333;
+  padding-left: 30rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.tuijian_title1{
+  padding: 1rpx 30rpx;
+  
+}
+.tuijian_img{
+  width: 234rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+}
+.tuijian_banner{
+  width: 100%;
+  padding: 20rpx 0rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+  display: flex;
+}
+.tuijian_title2{
+  font-size: 30rpx;
+  color: #333;
+  width: 350rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tuijian_title3{
+  margin-left: 20rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content:space-between;
+  float: left;
+  width: 100%;
+}
+.tuijian_title4{
+  font-size: 24rpx;
+  color: #999;
+}
+.flex1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tuijian_img1{
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 14rpx;
+}
+.tuijian_img4{
+  display: flex;
+  position: relative;
+}
+.tuijian_img3{
+  position: absolute; 
+  left: 64%;
+}
+.tuijian_img2{
+  margin-right: 40rpx;
+}
+.tuijian_jiage{
+  font-size: 30rpx;
+  color: #0396ff;
+}
+.footer{
+  height: 110rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 30rpx;
+}
+.footer1{
+  display: flex;
+  align-items: center;
+}
+.footer_img{
+  width: 40rpx;
+  height: 40rpx;
+}
+.footer_text1{
+  font-size: 26rpx;
+  color: #999;
+}
+.footer_text2{
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 20rpx;
+}

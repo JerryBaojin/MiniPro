@@ -1,0 +1,119 @@
+<!--zh_hdbm/pages/center/center.wxml-->
+<view class="font">
+  <!--头部开始  -->
+  <view class="part_header">
+    <view class="part_header_img">
+      <image src="{{url}}{{infos.logo}}" class="part_header_tou"></image>
+      <view class="part_header_name">{{infos.name}}</view>
+    </view>
+    <view class="part_header_bot">
+      <view class="part_header_left">
+        <text class="part_header_text">{{len}}</text>场活动
+      </view>
+      <view class="part_header_right">
+        <text class="part_header_text">{{too}}</text>人参与
+      </view>
+    </view>
+    <view class="part_header_jie">{{infos.details}}</view>
+  </view>
+  <!--头部结束  -->
+  <view class="center_select">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'centeron' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+
+  <!--————————————————————————进行中的活动部分开始——————————————————  -->
+  <view class="section" hidden="{{activeIndex != 0}}">
+    <!--如果是空的显示的状态  -->
+    <!-- <view class="section_kong">发起一个活动，开始召集你的好友</view> -->
+
+    <!--进行中的活动  -->
+    <view class="list_enroll" wx:for="{{activity}}">
+      <view class="tuijian_title1" wx:if="{{item.activity!=4||item.activity!=2}}" data-bm_id="{{item.bm_id}}"  bindtap="details" data-id="{{item.id}}">
+        <view class="tuijian_banner">
+          <view>
+            <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+          </view>
+          <view class="tuijian_title3">
+            <view class="tuijian_title2">
+              <view class="rich_one">{{item.name}}</view>
+            </view>
+            <view class="tuijian_title4">
+              <view class="tuijian_img4">
+                <view>
+                  <image class="tuijian_img1" src="../../images/riqi@2x.png"></image>
+                  <text class="tuijian_img2">{{item.start_time}}至{{item.end_time}}</text>
+                </view>
+                <view class="tuijian_img3">
+                  <image class="tuijian_img1" src="../../images/didian@2x.png"></image>
+                  <text>{{item.city}}</text>
+                </view>
+              </view>
+              <view class="flex1">
+                <view>
+                  <image class="tuijian_img1" src="../../images/xianshang@2x.png"></image>
+                  <text class="tuijian_img2" wx:if="{{item.activity_type==1}}">线上活动</text>
+                  <text class="tuijian_img2" wx:if="{{item.activity_type==2}}">线下活动</text>
+                </view>
+                <!-- <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view> -->
+               <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view>
+              <view class="tuijian_jiage" wx:if="{{item.cost<=0}}">免费</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--————————————————————————进行中的活动部分结束——————————————————  -->
+
+  <!--————————————————————————全部活动部分开始——————————————————  -->
+  <view class="section" hidden="{{activeIndex != 1}}">
+    <!--如果是空的显示的状态  -->
+    <!-- <view class="section_kong">发起一个活动，开始召集你的好友</view> -->
+
+    <!--已经报名后的状态  -->
+    <view class="list_enroll" wx:for="{{activity}}" >
+      <view class="tuijian_title1" bindtap="details" data-bm_id="{{item.bm_id}}" data-id="{{item.id}}">
+        <view class="tuijian_banner">
+          <view>
+            <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+          </view>
+          <view class="tuijian_title3">
+            <view class="tuijian_title2">
+              <view class="rich_one">{{item.name}}</view>
+            </view>
+            <view class="tuijian_title4">
+              <view class="tuijian_img4">
+                <view>
+                  <image class="tuijian_img1" src="../../images/riqi@2x.png"></image>
+                  <text class="tuijian_img2">{{item.start_time}}至{{item.end_time}}</text>
+                </view>
+                <view class="tuijian_img3">
+                  <image class="tuijian_img1" src="../../images/didian@2x.png"></image>
+                  <text>{{item.city}}</text>
+                </view>
+              </view>
+              <view class="flex1">
+                <view>
+                  <image class="tuijian_img1" src="../../images/xianshang@2x.png"></image>
+                  <text class="tuijian_img2" wx:if="{{item.activity_type==1}}">线上活动</text>
+                  <text class="tuijian_img2" wx:if="{{item.activity_type==2}}">线下活动</text>
+                </view>
+                <!-- <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view> -->
+               <view class="tuijian_jiage" wx:if="{{item.cost>0}}">¥{{item.cost}}</view>
+              <view class="tuijian_jiage" wx:if="{{item.cost<=0}}">免费</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--————————————————————————全部活动部分结束——————————————————  -->
+
+</view>
