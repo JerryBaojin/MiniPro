@@ -1,0 +1,44 @@
+<template name="itemsLists">
+
+    <view class="tuijian_title1" wx:for="{{list}}" wx:key="{{item.value}}">
+      <view bindtap="infoYemian" class="tuijian_banner" data-id="{{index}}" wx:for-index="index" wx:key="id">
+        <view>
+          <image class="tuijian_img" src="{{url}}{{item.logo}}"></image>
+        </view>
+        <view class="tuijian_title3">
+          <view class="tuijian_title2">
+            <view class="rich_one">
+              <text>{{item.name}}</text>
+              <!-- <text wx:if="{{item.hours<0&&item.days==0}}">{{item.hours}}小时后开始</text>
+                <text wx:if="{{item.hours>0&&item.days==0}}">{{item.hours}}小时前已经结束</text> -->
+            </view>
+            <view wx:if="{{item.is_close==1}}">
+              <view class='activity' wx:if="{{item.ren==0&&item.activity!=4}}">{{item.ac}}</view>
+              <view class='activity' style='background:#ccc;' wx:if="{{item.ren==0&&item.activity==4}}">{{item.ac}}</view>
+              <view class='activity' wx:if="{{item.ren==1}}">报名人数已满</view>
+            </view>
+            <view wx:if="{{item.is_close==2}}">
+              <view class='activity' style='background:#ccc;'>活动已关闭</view>
+            </view>
+          </view>
+          <view class="tuijian_title4">
+            <view class="tuijian_img4">
+              <view>
+                <image class="tuijian_img1" src="../images/riqi@2x.png"></image>
+                <!-- <text class="tuijian_img2" wx:if="{{item.hours<=0&&item.day==0}}">进行中</text>
+                 <text class="tuijian_img2" wx:if="{{item.hours<=0&&item.day<0}}">已结束</text> -->
+              <text class="tuijian_img2" wx:if="{{item.again!='已经结束'}}">{{item.again}}
+               </text>
+                <text class="tuijian_img2" wx:if="{{item.again=='已经结束'}}">{{item.again}}</text> 
+              </view>
+              <view class="tuijian_img3">
+                <image class="tuijian_img1" src="../images/didian@2x.png"></image>
+                <text>{{item.city}}</text>
+              </view>
+            </view>
+          
+          </view>
+        </view>
+      </view>
+    </view>
+</template>

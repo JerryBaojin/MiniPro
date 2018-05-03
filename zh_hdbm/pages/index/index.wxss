@@ -9,7 +9,9 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.tagActive{
+  border-bottom: 10rpx solid #ff4567;
+}
 page {
   background-color: #efeff4;
 }
@@ -162,9 +164,13 @@ page {
 
 .tuijian {
   background-color: white;
-  margin-top: 10rpx;
+  margin: 5rpx 0 5rpx;
   border-bottom: 1rpx solid #e5e5e5;
   border-top: 1rpx solid #e5e5e5;
+}
+.tuijian view{
+  flex: 1;
+  text-align: center
 }
 
 .tuijian_title {

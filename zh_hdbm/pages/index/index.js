@@ -7,6 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ppp:{
+      index:0
+    },
+    tagActiveNumber: 0,
     slider: [],
     url: '',
     swiperCurrent: 0,
@@ -23,7 +27,14 @@ Page({
       swiperCurrent: e.detail.current
     })
   },
+  loopTag: function (e) {
+    let that = this;
 
+    that.setData({
+      tagActiveNumber: e.currentTarget.dataset.current,
+      itemIndex: e.currentTarget.dataset.current
+    })
+  },
 
 
 

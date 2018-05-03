@@ -22,6 +22,7 @@ Page({
       types: options.types
     })
     var user_id = wx.getStorageSync('uid');
+ 
     app.util.request({
       'url': 'entry/wxapp/attachurl',
       headers: {
@@ -34,7 +35,7 @@ Page({
         that.setData({
           url: res.data
         })
-        //console.log(res)
+        console.log(res)
       },
     })
     if (options.types == 1) {

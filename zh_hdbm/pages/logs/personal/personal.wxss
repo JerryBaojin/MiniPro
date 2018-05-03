@@ -1,4 +1,23 @@
 /* zh_hdbm/pages/personal/personal.wxss */
+.lists{
+  background:#fff;
+  display:flex;
+  height:92rpx;
+  line-height:92rpx;
+  margin-bottom: 10rpx;
+}
+.a1{
+width:65rpx;
+height:65rpx;
+margin:10rpx 60rpx 10rpx 30rpx;
+}
+.a2{
+  width:65rpx;
+height:65rpx;
+position:relative;
+left:51%;
+top: 5%;
+}
 .container{
   width: 100%;
   height: 100%;
