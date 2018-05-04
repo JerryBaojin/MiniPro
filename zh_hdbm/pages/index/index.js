@@ -10,6 +10,7 @@ Page({
     ppp:{
       index:0
     },
+    swiperHeight:0,
     tagActiveNumber: 0,
     slider: [],
     url: '',
@@ -20,32 +21,92 @@ Page({
     nickName: '',
     hidden: false,
     copyright: [],
-    loading: false
+    loading: false,
+    pet: [
+      {
+        "id": "1",
+        "nickname": "tom",
+        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
+        "action": "我想领养",
+        "contents": "我想领养狗狗",
+        "address": "四川省"
+      }, {
+        "id": "2",
+        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
+        "nickname": "tom",
+        "action": "我想领养",
+        "contents": "我想领养狗狗",
+        "address": "四川省"
+      }, {
+        "id": "3",
+        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
+        "nickname": "tom",
+        "action": "我想领养",
+        "contents": "我想领养狗狗",
+        "address": "四川省"
+      }
+    ]
+    , master: [
+      {
+        "id": "1",
+        "nickname": "tom",
+        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
+        "action": "我想领养",
+        "contents": "我想领养狗狗",
+        "address": "四川省"
+      }, {
+        "id": "2",
+        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
+        "nickname": "tom",
+        "action": "我想领养",
+        "contents": "我想领养狗狗",
+        "address": "四川省"
+      }, {
+        "id": "3",
+        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
+        "nickname": "tom",
+        "action": "我想领养",
+        "contents": "我想领养狗狗",
+        "address": "四川省"
+      }
+    ]
+  
+
   },
   swiperChange: function (e) {
     this.setData({
       swiperCurrent: e.detail.current
     })
+  this.syncHeight();
+  },
+  syncHeight:function(e){
+    let that = this;
+    if(this.data.ppp.index==0){
+      that.setData({
+        swiperHeight:that.data.pet.length*262
+      })
+    }else{
+      that.setData({
+        swiperHeight: that.data.master.length * 262
+      })
+    }
+    console.log(this.data)
   },
   loopTag: function (e) {
     let that = this;
-
     that.setData({
       tagActiveNumber: e.currentTarget.dataset.current,
       itemIndex: e.currentTarget.dataset.current
     })
   },
-
-
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this
-    
-   
-    that.reload()
+    that.reload();
+  
+    this.syncHeight();
   },
   reload: function (e) {
     var that = this
@@ -91,7 +152,7 @@ Page({
                   'cachetime': '0',
                   data: { openid: openid, img: avatarUrl, name: nickName },
                   success: function (res) {
-                    console.log(res)
+         
                     wx.setStorageSync("uid", res.data.id)
                     wx.setStorageSync("user", res.data)
                     that.setData({
@@ -251,356 +312,7 @@ Page({
         },
       }),
 
-      //活动的接口
-      app.util.request({
-        'url': 'entry/wxapp/activity',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        'cachetime': '0',
-        success: function (res) {
-          console.log(res)
-          var now = new Date();
-          var nowTime = now.getTime();
-          var day = now.getDay();
-          var oneDayLong = 24 * 60 * 60 * 1000;
-          // var MondayTime = nowTime - (day - 1) * oneDayLong;
-          var SundayTime = nowTime + (7 - day) * oneDayLong;
-          // 本周周一
-          // var c = new Date(MondayTime);
-          // 本周周末
-          var d = new Date(SundayTime);
-          var youWant = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
-          console.log(youWant)
-          for (var i = 0; i < res.data.length; i++) {
-            var list = res.data
-            wx.setStorageSync("uniacid", res.data[i].uniacid)
-            list[i].star_time = list[i].start_time.slice(5, 16)
-            list[i].star = list[i].start_time
-            list[i].star1 = list[i].start_time.slice(0,10)
-            list[i].city = list[i].city.slice(0, 4)
-            list[i].hour = list[i].star.slice(11,16)
-            // 计算活动开始时间是周几
-            list[i].week= new Date(list[i].star1).getDay();
-            // 计算今天是周几
-            list[i].week1 = new Date().getDay();
-            
-           // 计算相差天数
-            var date1 = list[i].star.slice(8, 10)
-            var date2 = time1.slice(8, 10)
-            var d1 = new Date(time1)
-            var d2 = new Date(list[i].star)
-            var d3 = d2.getTime() - d1.getTime()
-            list[i].days = Math.floor(d3 / (24 * 3600 * 1000))//两个时间相差的天数
-            // 活动开始时间
-            var date1 = new Date(list[i].star1)
-            // 当前时间
-            var date2 = new Date(time1.slice(0, 10))
-            // 本周末时间
-            var date4 = new Date(youWant.slice(0,10))
-            // 活动开始时间与当前时间差
-            var date3 = date1.getTime() - date2.getTime()
-            // 活动开始时间与当前时间差
-            var date5 = date4.getTime() - date1.getTime()
-            var day1 = Math.floor(date5 / (24 * 3600 * 1000))
-            if(day1>=-1){
-              list[i].day1 = '本周'
-            }else if(day1< -1){
-              list[i].day1 = '下周'
-            }
-            list[i].day2 = day1
-
-
-            list[i].day = Math.floor(date3 / (24 * 3600 * 1000))//两个时间相差的天数
-            console.log(list[i].bm_start)
-            console.log(list[i].bm_end)
-            console.log(time)
-            if (list[i].end_time>time1){
-              console.log('大于当前时间')
-            }else{
-              console.log('小于当前时间')
-            }
-            // 计算相差小时数
-            var leave1 = d3 % (24 * 3600 * 1000)
-            list[i].hours = Math.floor(leave1 / (3600 * 1000))
-            if (list[i].bm_start <= time && list[i].bm_end>=time){
-              list[i].activity = 3
-              list[i].ac = '报名中'
-            } else if (time >= list[i].star_time && time <= list[i].end_time ){
-              if (list[i].bm_start <= time && list[i].bm_end >= time) {
-                list[i].activity = 3
-                list[i].ac = '报名中'
-              } else{
-                list[i].activity = 1
-                list[i].ac = '活动进行中'
-              }
-            } else if (time > list[i].end_time){
-              list[i].activity = 4
-              list[i].ac = '活动结束'
-            } else if (time < list[i].start_time) {
-              list[i].activity = 2
-              list[i].ac = '活动未开始'
-            }
-            if (time1 > list[i].star && time1 < list[i].end_time){
-              list[i].again = '活动已经开始'
-            } else if(time1 < list[i].star &&day==0){
-              list[i].again = '今天 '+list[i].hour+' 开始'
-            } else if (time1 > list[i].end_time ) {
-              list[i].again = '活动已经结束'
-            } else if (list[i].day<0){
-              list[i].again = '已经结束'
-            } else if (list[i].day==0){
-              list[i].again = '今天 ' + list[i].hour + ' 开始'
-            }else if (list[i].day==1){
-              list[i].again = '明天 ' + list[i].hour + ' 开始'
-            }else if(list[i].day ==2){
-              list[i].again = '后天 ' + list[i].hour + ' 开始'
-            } else if (list[i].day == 3) {
-              if (list[i].week1==0){
-                list[i].again = '下周三 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 1) {
-                list[i].again = '周四 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = '下周一 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 6) {
-                list[i].again = '下周二 ' + list[i].hour + ' 开始'
-              }
-            } else if (list[i].day == 4) {
-              if (list[i].week1 == 0) {
-                list[i].again = '下周四 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 1) {
-                list[i].again = '周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '下周一 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = '下周二 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 6) {
-                list[i].again = '下周三 ' + list[i].hour + ' 开始'
-              }
-            } else if (list[i].day == 5) {
-              if (list[i].week1 == 0) {
-                list[i].again = '下周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 1) {
-                list[i].again = '周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '下周一 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '下周二 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = '下周三 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 6) {
-                list[i].again = '下周四 ' + list[i].hour + ' 开始'
-              }
-            } else if (list[i].day == 5) {
-              if (list[i].week1 == 0) {
-                list[i].again = '下周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 1) {
-                list[i].again = '周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '下周一 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '下周二 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = '下周三 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 6) {
-                list[i].again = '下周四 ' + list[i].hour + ' 开始'
-              }
-            } else if (list[i].day == 6) {
-              if (list[i].week1 == 0) {
-                list[i].again = '下周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 1) {
-                list[i].again = '周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '下周一 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '下周二 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '下周三 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = '下周四 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 6) {
-                list[i].again = '下周五 ' + list[i].hour + ' 开始'
-              }
-            } else if (list[i].day == 7) {
-              if (list[i].week1 == 0) {
-                list[i].again = '下周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 1) {
-                list[i].again = '下周一 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '下周二 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '下周三 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '下周四 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = '下周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 6) {
-                list[i].again = '下周六 ' + list[i].hour + ' 开始'
-              }
-            } else if (list[i].day == 8) {
-              if (list[i].week1 == 0) {
-                list[i].again = list[i].star.slice(5, 16)+"  开始"
-              } else if (list[i].week1 == 1) {
-                list[i].again = '下周二 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '下周三 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '下周四 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '下周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = '下周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 6) {
-                list[i].again = '下周日 ' + list[i].hour + ' 开始'
-              }
-            } else if (list[i].day == 9) {
-              if (list[i].week1 == 0) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 1) {
-                list[i].again = '下周三 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '下周四 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '下周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '下周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = '下周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 6) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              }
-            } else if (list[i].day == 10) {
-              if (list[i].week1 == 0) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 1) {
-                list[i].again = '下周四 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '下周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '下周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = '下周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 5) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 6) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              }
-            } else if (list[i].day == 11) {
-              if (list[i].week1 == 0) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 1) {
-                list[i].again = '下周五 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '下周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = '下周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 4) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 5) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 6) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              }
-            } else if (list[i].day == 12) {
-              if (list[i].week1 == 0) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 1) {
-                list[i].again = '下周六 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = '下周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 3) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 4) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 5) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 6) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              }
-            } else if (list[i].day == 13) {
-              if (list[i].week1 == 0) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 1) {
-                list[i].again = '下周日 ' + list[i].hour + ' 开始'
-              } else if (list[i].week1 == 2) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 3) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 4) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 5) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 6) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              }
-            } else if (list[i].day >= 13) {
-              if (list[i].week1 == 0) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 1) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 2) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 3) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 4) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 5) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              } else if (list[i].week1 == 6) {
-                list[i].again = list[i].star.slice(5, 16) + "  开始"
-              }
-            }
-           
-            var enroll_num = Number(list[i].enroll_num)
-            // console.log('报名人数' + enroll_num)
-            var limit_num = Number(list[i].limit_num)
-            // console.log('限制人数' + limit_num)
-            if (limit_num == 0) {
-              list[i].ren = 0
-            } else {
-              if (enroll_num <= limit_num) {
-                list[i].ren = 0
-              } else {
-                list[i].ren = 1
-              }
-            }
-            // 获取报名人数
-            app.util.request({
-              'url': 'entry/wxapp/enroll',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              'cachetime': '0',
-              data: { id: list[i].id },
-              success: function (res) {
-                // console.log(res.data.length)
-                var renshu = Number(res.data.length)
-                // list[i].renshu = renshu
-              },
-            }),
-            console.log(list)
-              that.setData({
-                list: list
-              })
-            // console.log(list)
-            // console.log(res.data[i].start_time.slice(5,11))
-          }
-        },
-      }),
+     
       //头条详情的接口
       app.util.request({
         'url': 'entry/wxapp/toplist',
@@ -732,7 +444,17 @@ Page({
     var index = e.currentTarget.dataset.id
     // console.log(that.data)
     var user_id = that.data.uid
-    console.log(e)
+
+    if (this.data.ppp.index == 0) {
+      that.setData({
+        list: that.data.pet
+      })
+    } else {
+      that.setData({
+        list: that.data.master
+      })
+    }
+
     for (var i = 0; i < that.data.list.length; i++) {
 
       if (that.data.list[i].id == that.data.list[index].id) {

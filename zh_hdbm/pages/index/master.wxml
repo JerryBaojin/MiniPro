@@ -1,5 +1,5 @@
 <template name="itemsLists">
-    <view class="tuijian_title1" wx:for="{{pet}}" wx:key="{{item.value}}">
+    <view class="tuijian_title1" wx:for="{{master}}" wx:key="{{item.value}}">
       <view bindtap="infoYemian" class="tuijian_banner" data-id="{{index}}" wx:for-index="index" wx:key="id">
         <view class="tempTop">
             <image  src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002"></image>

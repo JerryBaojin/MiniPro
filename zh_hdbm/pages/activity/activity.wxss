@@ -1,5 +1,66 @@
 /* zh_hdbm/pages/activity/activity.wxss */
+textarea{
+  height:100px;
+background:#fff;
+width:100%;
+margin:5rpx;
+}
+text{
+  font-size:31rpx;
+}
+.uploaded image{
+  width:165rpx;
+height:165rpx;
+margin:12rpx;
+}
+.addp{
+    width:165rpx;
+height:165rpx;
 
+float:left;
+text-align:center;
+line-height:165rpx;
+font-size:60rpx;
+background:#fff;
+margin:11rpx;
+border:1rpx solid #ccc;
+
+}
+.uploaded{
+display:inline-block;
+float:left;
+overflow: hidden;
+}
+.lists{
+    background:#fff;
+      display:flex;
+        height:92rpx;
+          line-height:92rpx;
+            margin-bottom: 10rpx;
+            font-size: 30rpx;
+}
+.lists{
+  background:#fff;
+  display:flex;
+  height:92rpx;
+  line-height:92rpx;
+  margin-bottom: 10rpx;
+}
+.a1{
+width:50rpx;
+height:51rpx;
+margin:20rpx 50rpx 10rpx 30rpx;
+
+}
+.a2{
+background:#fff;
+text-indent:18rpx;
+height:74rpx;
+}
+.a2 input{
+  height: 100%;
+  text-indent: 18rpx;
+}
 page {
   background: #e5e5e5;
 }
