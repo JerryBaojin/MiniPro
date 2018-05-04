@@ -8,19 +8,18 @@ Page({
    */
   data: {
     array: ['寻狗启示', '寻源主人', '免费领养', '我想领养'],
-      uploadedImgs:[
-        'https://f10.baidu.com/it/u=4275698274,1937571846&fm=76',
-        'https://f10.baidu.com/it/u=4275698274,1937571846&fm=76',
-        'https://f10.baidu.com/it/u=4275698274,1937571846&fm=76'
-      ],
+      uploadedImgs:[],
       location:'',
       index:"",
       loc:"位置"
       
   },
   formSubmit: function (e) {
+ 
+    return false;
     let that=this;
-    let datas= {...e.detail.value,...that.data};
+    let openid = wx.getStorageSync("openid");
+    let datas = { ...e.detail.value, ...that.data};
     delete datas['array'];
     delete datas['loc'];
     for (let v in datas){
@@ -32,7 +31,44 @@ Page({
      return false;
    }
     }
-  },
+if(openid==''){
+  wx.showModal({
+    content: "请重新进入程序",
+    showCancel: false
+  })
+  return false;
+}
+    app.util.request({
+      'url': 'entry/wxapp/saveInfos',
+      'cachetime': '0',
+      data: { ...datas, openid: openid},
+      success:function(res){
+          if(res.data==1){
+            wx.showModal({
+              content: "发布成功！",
+              showCancel: false,
+              success:function(res){
+               if(!res.cancel){
+                 wx.switchTab({
+                   url: '../index/index',
+
+                 })
+               }
+              }
+            })
+          }else if(res.data==2){
+            wx.showModal({
+              content: "转发微信群三个方可发布信息",
+              showCancel: false
+            })
+          }else{
+            wx.showModal({
+              content: "请重新进入程序",
+              showCancel: false
+            })
+          }
+      }
+  })},
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -79,21 +115,33 @@ Page({
     wx.chooseImage({
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
-        that.setData({
-          uploadedImgs: that.data.uploadedImgs.concat(tempFilePaths)
-        })
-        console.log(that.data)
-        return false;
+       
+ 
+        let  uploadUrl = app.util.url('entry/wxapp/Upload');  
+        var uniacid = 97;
         wx.uploadFile({
-          url: 'https://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
+          url: "https://wzqd.qidongwx.com/" + 'app/index.php?i=' + uniacid + '&c=entry&a=wxapp&do=upload&m=zh_hdbm',
           filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'user': 'test'
-          },
-          success: function (res) {
-            var data = res.data
-            //do something
+          name: 'upfile',
+          success: function (rers) {
+            rers.data = rers.data.replace(/[\r\n]/g, "");    
+           if(rers.data==2){
+             wx.showToast({
+               title: '文件太大',
+             })
+           }else if(rers.data == '') {
+             wx.showToast({
+               title: '上传失败',
+             })
+           }else{
+             let p = that.data.uploadedImgs
+             p.push("https://wzqd.qidongwx.com/attachment/" + rers.data)
+             that.setData({
+               uploadedImgs: p
+             })
+           }
+         
+        
           }
         })
       }

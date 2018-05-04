@@ -73,22 +73,16 @@
   <!--——————————————推荐板块开始——————————  -->
 
 <view style="display:flex;" class='tuijian'>
-   <view  class="{{tagActiveNumber==0?'tagActive':''}}" bindtap="loopTag" data-current="0">寻找宠物</view>
-  <view class="{{tagActiveNumber==1?'tagActive':''}}" bindtap="loopTag" data-current="1">寻原主人</view>
+   <view   bindtap="loopTag" data-current="0">最新信息</view>
+
 </view>
-<swiper id="details" current="{{itemIndex}}" style="height:{{swiperHeight}}px">
 
-  <swiper-item>
-  <import src="pet.wxml" />  
-  <template is="itemsLists" data="{{pet}}"/>
-  </swiper-item>
-
-  <swiper-item>
+<view>
   <import src="master.wxml" />  
   <template is="itemsLists" data="{{master}}"/>
-  </swiper-item>
+</view>
 
-</swiper>
+
 
 
   <!--__________________推荐板块结束  -->

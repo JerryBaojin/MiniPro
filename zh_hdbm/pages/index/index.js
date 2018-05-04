@@ -22,31 +22,7 @@ Page({
     hidden: false,
     copyright: [],
     loading: false,
-    pet: [
-      {
-        "id": "1",
-        "nickname": "tom",
-        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
-        "action": "我想领养",
-        "contents": "我想领养狗狗",
-        "address": "四川省"
-      }, {
-        "id": "2",
-        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
-        "nickname": "tom",
-        "action": "我想领养",
-        "contents": "我想领养狗狗",
-        "address": "四川省"
-      }, {
-        "id": "3",
-        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
-        "nickname": "tom",
-        "action": "我想领养",
-        "contents": "我想领养狗狗",
-        "address": "四川省"
-      }
-    ]
-    , master: [
+ master: [
       {
         "id": "1",
         "nickname": "tom",
@@ -73,25 +49,7 @@ Page({
   
 
   },
-  swiperChange: function (e) {
-    this.setData({
-      swiperCurrent: e.detail.current
-    })
-  this.syncHeight();
-  },
-  syncHeight:function(e){
-    let that = this;
-    if(this.data.ppp.index==0){
-      that.setData({
-        swiperHeight:that.data.pet.length*262
-      })
-    }else{
-      that.setData({
-        swiperHeight: that.data.master.length * 262
-      })
-    }
-    console.log(this.data)
-  },
+
   loopTag: function (e) {
     let that = this;
     that.setData({
@@ -105,8 +63,7 @@ Page({
   onLoad: function (options) {
     var that = this
     that.reload();
-  
-    this.syncHeight();
+
   },
   reload: function (e) {
     var that = this
