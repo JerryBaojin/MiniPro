@@ -219,12 +219,15 @@ page {
   border-bottom: 1rpx solid #e5e5e5;
   border-top: 1rpx solid #e5e5e5;
 }
+
 .tuijian view{
   flex: 1;
   text-align: center
 }
 
 .tuijian_title {
+  background:#fff;
+margin:20rpx 0;
   height: 90rpx;
   font-size: 34rpx;
   color: #333;
@@ -236,6 +239,9 @@ page {
 .tuijian_title1 {
   padding: 1rpx 30rpx;
   overflow: hidden;
+  background:#fff;
+margin:20rpx 0;
+
   position: relative;
 }
 

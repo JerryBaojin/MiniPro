@@ -18,12 +18,12 @@
   </view>
   <!--头部结束  -->
 </view>
-<view class="lists">
+<view class="lists" bindtap='mylists'>
    <image class="a1" src="../../../resource/img/fabu.png"></image>
   <view>我的发布</view>
   <image  class="a2" src="../../../resource/img/right.png"></image>
 </view>
-<view class="lists">
+<view class="lists" bindtap='todetial'>
    <image class='a1' src="../../../resource/img/info.png"></image>
   <view>用户信息</view>
 </view>

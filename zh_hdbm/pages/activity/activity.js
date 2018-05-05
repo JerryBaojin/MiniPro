@@ -15,8 +15,8 @@ Page({
       
   },
   formSubmit: function (e) {
- 
-    return false;
+    let times = wx.getStorageSync("sharePage")
+      
     let that=this;
     let openid = wx.getStorageSync("openid");
     let datas = { ...e.detail.value, ...that.data};
@@ -41,7 +41,7 @@ if(openid==''){
     app.util.request({
       'url': 'entry/wxapp/saveInfos',
       'cachetime': '0',
-      data: { ...datas, openid: openid},
+      data: { ...datas, openid: openid,headImg:wx.getStorageSync("img"),nickname:wx.getStorageSync("name")},
       success:function(res){
           if(res.data==1){
             wx.showModal({
@@ -80,6 +80,7 @@ if(openid==''){
     var that = this
       wx.chooseLocation({
         success: function (res) {
+          console.log(res);
           that.setData({
             location:res,
             loc:res.address
@@ -112,6 +113,13 @@ if(openid==''){
   },
   uploadPic:function(e){
     let that=this;
+    if (that.data.uploadedImgs.length>=3){
+      wx.showModal({
+        content: '最多上传3张图片',
+       showCancel:false 
+      })
+      return false;
+    }
     wx.chooseImage({
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
@@ -136,9 +144,11 @@ if(openid==''){
            }else{
              let p = that.data.uploadedImgs
              p.push("https://wzqd.qidongwx.com/attachment/" + rers.data)
+        
              that.setData({
                uploadedImgs: p
              })
+ 
            }
          
         
@@ -152,6 +162,31 @@ if(openid==''){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   let times= wx.getStorageSync("sharePage")
+    
+  },
+   onShareAppMessage: function () {
+    console.log(this.data)
+    return {
+      title: wx.getStorageSync("seller").copyright,
+      path: '/zh_hdbm/pages/index/index',
+      success: function (res) {
+        app.util.request({
+          'url': 'entry/wxapp/recordShare',//接口
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          'cachetime': '0',
+          data: { openid: wx.getStorageSync("openid") },//传给后台的值，实时变化
+          success: function (res) {
+            let p = wx.getStorageSync("sharePage");
+            wx.setStorageSync("sharePage", p + 1)
+          }
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

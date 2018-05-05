@@ -18,6 +18,16 @@ Page({
 
     that.reload()
   },
+  todetial:function(){
+    wx.navigateTo({
+      url: 'info',
+    })
+  },
+  mylists:function(){
+    wx.navigateTo({
+      url: '../../index/classification?id=-1&name=我的发布',
+    })
+  },
   reload: function (e) {
     var that = this
     var user_id = wx.getStorageSync('uid');

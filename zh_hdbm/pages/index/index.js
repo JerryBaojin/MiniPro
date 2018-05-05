@@ -22,31 +22,7 @@ Page({
     hidden: false,
     copyright: [],
     loading: false,
- master: [
-      {
-        "id": "1",
-        "nickname": "tom",
-        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
-        "action": "我想领养",
-        "contents": "我想领养狗狗",
-        "address": "四川省"
-      }, {
-        "id": "2",
-        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
-        "nickname": "tom",
-        "action": "我想领养",
-        "contents": "我想领养狗狗",
-        "address": "四川省"
-      }, {
-        "id": "3",
-        "headImgurl": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=689996742,3590719479&fm=173&app=25&f=JPEG?w=218&h=146&s=6BA00CC50016BFD050944CAD03003002",
-        "nickname": "tom",
-        "action": "我想领养",
-        "contents": "我想领养狗狗",
-        "address": "四川省"
-      }
-    ]
-  
+    index:1
 
   },
 
@@ -63,8 +39,93 @@ Page({
   onLoad: function (options) {
     var that = this
     that.reload();
+    that.getDatas();
+  },
+  onShow: function (options) {
+    var that = this
+    that.reload();
+    that.getDatas();
+  },
+  onReachBottom: function (e) {
+    let that=this;
+  that.getDatas();
+  },
+  infoYemian: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.id
+    // console.log(that.data)
+    var datas = that.data.list[index]
+
+    wx.setStorageSync("details", datas);
+    wx.navigateTo({
+      url: "../info/info",
+    })
 
   },
+ timestampToTime:function(timestamp) {
+  var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+  var Y = date.getFullYear() + '-';
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+  var D = date.getDate() + ' ';
+  var h = date.getHours() + ':';
+  var m = date.getMinutes() + ':';
+  var s = date.getSeconds();
+  return Y+ M + D + h + m + s;
+  },
+
+  getDatas:function(e){
+    let that = this;
+    if(that.data.index==-1){
+      return false;
+    }
+    app.util.request({
+      'url': 'entry/wxapp/infos',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      'cachetime': '0',
+      data: {
+        index: that.data.index,
+        type: "newLists"
+      },
+   success: function (res) {
+
+     res.data.map(function(v,k){
+       res.data[k].time = that.timestampToTime(v.time);
+       let p="";
+       switch (v.types){
+            case "0":
+              p="寻狗启示";
+            break;
+            case "1":
+              p = "寻源主人";
+              break;
+            case "2":
+              p = "免费领养";
+              break;
+            case "3":
+              p = "我想领养";
+              break;
+       }
+       res.data[k].types = p;
+       res.data[k].imgs = JSON.parse(v.imgs.replace(/&quot;/g, '"'));
+       res.data[k].location = JSON.parse(v.location.replace(/&quot;/g, '"'));
+     })
+     if (res.data.length >= 1 && res.data.length < 10){
+       that.setData({
+        // list: [...that.data.list, ...res.data]
+         list:  res.data
+       })
+     } else if (res.data.length>=10){
+       that.setData({
+        list: [...that.data.list, ...res.data],
+         index:++that.data.index
+       })
+     }
+    
+      },
+  })}
+   , 
   reload: function (e) {
     var that = this
     wx.login({
@@ -101,15 +162,19 @@ Page({
                 wx.setStorageSync("openid", res.data.openid)
                 wx.setStorageSync("img", avatarUrl)
                 wx.setStorageSync("name", nickName)
+                wx.setStorageSync("sex", gender)
                 app.util.request({
                   'url': 'entry/wxapp/login',
                   headers: {
                     'Content-Type': 'application/json',
                   },
                   'cachetime': '0',
-                  data: { openid: openid, img: avatarUrl, name: nickName },
+                  data: { openid: openid, img: avatarUrl, name: nickName, sex: gender },
                   success: function (res) {
-         
+                    wx.setStorageSync("phone", res.data.phone)
+                    wx.setStorageSync("infos", res.data.infos)
+                    wx.setStorageSync("addr", res.data.addr)
+                    wx.setStorageSync("sharePage", res.data.sharePage)
                     wx.setStorageSync("uid", res.data.id)
                     wx.setStorageSync("user", res.data)
                     that.setData({
@@ -268,22 +333,7 @@ Page({
           //console.log(res)
         },
       }),
-
-     
       //头条详情的接口
-      app.util.request({
-        'url': 'entry/wxapp/toplist',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        'cachetime': '0',
-        success: function (res) {
-          that.setData({
-            toutiao: res.data
-          })
-          //console.log(res)
-        },
-      }),
 
       //平台信息
       app.util.request({
@@ -396,34 +446,7 @@ Page({
     })
 
   },
-  infoYemian: function (e) {
-    var that = this;
-    var index = e.currentTarget.dataset.id
-    // console.log(that.data)
-    var user_id = that.data.uid
 
-    if (this.data.ppp.index == 0) {
-      that.setData({
-        list: that.data.pet
-      })
-    } else {
-      that.setData({
-        list: that.data.master
-      })
-    }
-
-    for (var i = 0; i < that.data.list.length; i++) {
-
-      if (that.data.list[i].id == that.data.list[index].id) {
-        console.log(that.data.list[i])
-        // console.log(that.data.list[index].cost)
-        wx.navigateTo({
-          url: '../info/info?id=' + that.data.list[index].id + '&created_time=' + that.data.list[index].created_time + '&coll=' + that.data.list[i].cost + '&logo=' + that.data.list[i].logo + '&name=' + that.data.list[i].name + '&summary=' + that.data.list[i].summary + '&limit_num=' + that.data.list[i].limit_num + '&activi=' + that.data.list[i].activity + '&type=' + that.data.list[i].type + '&ren=' + that.data.list[i].ren + '&user_id=' + user_id,
-        })
-        //console.log(e.currentTarget.dataset.id)
-      }
-    }
-  },
   infoYemian1: function (e) {
     var that = this;
     var index = e.currentTarget.dataset.id
@@ -482,32 +505,25 @@ Page({
   onReady: function () {
 
   },
-  onPullDownRefresh: function (e) {
-    var that = this
-    if (that.data.loading == true) {
-      that.reload()
-      wx.stopPullDownRefresh();
-    } else {
-      wx: wx.showToast({
-        title: '1100',
-        icon: '',
-        image: '',
-        duration: 3000,
-        mask: true,
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    }
-  },
+
   //点击分享
   onShareAppMessage: function () {
-    console.log(this.data)
     return {
       title: this.data.copyright.name,
       path: '/zh_hdbm/pages/index/index',
       success: function (res) {
-        // 转发成功
+        app.util.request({
+          'url': 'entry/wxapp/record',//接口
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          'cachetime': '0',
+          data: { openid: wx.getStorageSync("openid") },//传给后台的值，实时变化
+          success:function(res){
+            let p = wx.getStorageSync("sharePage") ;
+            wx.setStorageSync("sharePage",p+1)
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

@@ -1,0 +1,7 @@
+.container view{
+  background: #fff;
+  margin-bottom: 12rpx;
+}
+.container input{
+  text-indent: 20rpx;
+}

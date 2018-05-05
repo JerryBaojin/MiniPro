@@ -78,8 +78,8 @@
 </view>
 
 <view>
-  <import src="master.wxml" />  
-  <template is="itemsLists" data="{{master}}"/>
+  <import src="list.wxml" />  
+  <template is="itemsLists" data="{{list}}"/>
 </view>
 
 

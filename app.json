@@ -1,6 +1,6 @@
 {
   "pages": [
-        "zh_hdbm/pages/activity/activity",
+          
     "zh_hdbm/pages/index/index",
     "zh_hdbm/pages/logs/admin/scancode",
     "zh_hdbm/pages/enroll/enroll",
@@ -22,13 +22,13 @@
     "zh_hdbm/pages/logs/edit/edit",
     "zh_hdbm/pages/logs/acinfo/acinfo",
     "zh_hdbm/pages/logs/center/center",
-
+"zh_hdbm/pages/activity/activity",
     "zh_hdbm/pages/activity/introduce",
     "zh_hdbm/pages/lijibm/lijibm",
     "zh_hdbm/pages/logs/mylist/mylist",
     "zh_hdbm/pages/logs/mylist/listinfo",
     "zh_hdbm/pages/guanyu/guanyu",
-   
+   "zh_hdbm/pages/logs/personal/info",
     "zh_hdbm/pages/list/list",
     "we7/pages/index/index",
     "we7/pages/user/index/index",

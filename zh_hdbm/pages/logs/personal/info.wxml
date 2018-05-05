@@ -1,0 +1,34 @@
+<view class="container">
+<form  bindsubmit="formSubmit">
+  <view>
+     微信昵称
+  
+  <input name="nickname"  value="{{infos.nickname}}"></input>
+  </view>
+    <view>
+    性别
+    
+
+  <radio-group class="radio-group" bindchange="radioChange">
+  <label class="radio" wx:for="{{items}}" wx:key="{{index}}">
+    <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+  </label>
+</radio-group>
+</view>
+<view>
+手机号
+  <input type='number' placeholder='请输入手机号' name="phone" value='{{infos.phone}}' maxlength='11'></input>
+</view>
+
+<view>
+地址
+  <input placeholder='请输入地址' type='text' name="addr" value='{{infos.addr}}' maxlength='500'></input>
+</view>
+
+<view>
+个人介绍
+  <textarea  name="info" placeholder='请输入简介' type='text' >{{infos.info}} </textarea>
+</view>
+ <button formType="submit">提交</button>
+</form>
+</view>
