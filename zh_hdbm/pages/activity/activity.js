@@ -43,28 +43,20 @@ if(openid==''){
       'cachetime': '0',
       data: { ...datas, openid: openid,headImg:wx.getStorageSync("img"),nickname:wx.getStorageSync("name")},
       success:function(res){
-          if(res.data==1){
+          if(res.data==0){
             wx.showModal({
-              content: "发布成功！",
-              showCancel: false,
-              success:function(res){
-               if(!res.cancel){
-                 wx.switchTab({
-                   url: '../index/index',
-
-                 })
-               }
-              }
+              content: "请重新进入程序",
+              showCancel: false
             })
-          }else if(res.data==2){
+          }else if(res.data==-2){
             wx.showModal({
               content: "转发微信群三个方可发布信息",
               showCancel: false
             })
           }else{
-            wx.showModal({
-              content: "请重新进入程序",
-              showCancel: false
+       
+            wx.navigateTo({
+              url: '../person/info?id=' + res.data,
             })
           }
       }

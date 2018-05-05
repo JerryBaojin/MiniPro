@@ -25,7 +25,7 @@ Page({
   },
   mylists:function(){
     wx.navigateTo({
-      url: '../../index/classification?id=-1&name=我的发布',
+      url: 'list?id=-1&name=我的发布',
     })
   },
   reload: function (e) {

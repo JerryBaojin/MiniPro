@@ -16,6 +16,8 @@ Page({
     url: '',
     swiperCurrent: 0,
     list: [],
+    back:[],
+    backIndex:0,
     toutiao: '',
     avatarUrl: '',
     nickName: '',
@@ -423,7 +425,13 @@ Page({
   },
   sousuo: function (e) {
     var that = this;
-    // console.log(e.detail.value)
+    if (e.detail.value == '' && that.data.back.length>=1){
+      that.setData({
+        list: that.data.back,
+        index: that.data.backIndex
+      })
+      return false;
+    }
     app.util.request({
       'url': 'entry/wxapp/activity',//接口
       headers: {
@@ -431,16 +439,17 @@ Page({
       },
       'cachetime': '0',
       data: { keywords: e.detail.value },//传给后台的值，实时变化
-      success: function (res) {
-        for (var i = 0; i < res.data.length; i++) {
-          // console.log(res.data[i])
-          that.setData({
-            sousuo: res.data,
-            name: res.data[i].name,
-            hidden: false
-          })
-        }
 
+      success: function (res) {
+        if(res.data.length>=1){
+          that.setData({
+            back:that.data.list,
+            backIndex: that.data.index,
+            list:res.data,
+            index:-1
+          })
+
+        }
       },
 
     })

@@ -30,7 +30,7 @@
   <view class="header rel">
     <view class="header_img ab">
       <view class="swiper-container">
-        <swiper autoplay="true" interval="5000" indicator-color="#fff" indicator-active-color="#43B1FF" indicator-dots="true" duration="500" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
+        <swiper autoplay="true" interval="5000" indicator-color="#fff" indicator-active-color="#43B1FF" indicator-dots="true" duration="500" circular="true" current="{{swiperCurrent}}"  class="swiper">
           <block wx:for="{{slider}}" wx:key="unique">
             <swiper-item>
               <image mode="aspectFill" src="{{url}}{{item.logo}}" class="img"></image>

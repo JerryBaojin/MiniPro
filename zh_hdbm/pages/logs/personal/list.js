@@ -6,10 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    index:0,
-    list:[],
-    type:0,
-    aType:"slider"
+    index: 0,
+    list: [],
+    type: 0,
+    aType: "slider"
   },
 
   /**
@@ -17,28 +17,71 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    console.log(options);
     wx.setNavigationBarTitle({
       title: options.name
     })
-    if (parseInt(options.id)==-1){
+    if (parseInt(options.id) == -1) {
       that.setData({
-        aType:"openid",
+        aType: "openid",
         type: wx.getStorageSync("openid")
       })
-    }else{
+    } else {
       that.setData({
         type: parseInt(options.id) - 1
       })
     }
- 
-   
-   that.getDatas();
-},
+
+
+    that.getDatas();
+  },
+  del: function (e) {
+    let x=e.currentTarget.dataset;
+    let that = this;
+    wx.showModal({
+      content: '确认删除吗?',
+      success: function (res) {
+        if (res.confirm) {
+          app.util.request({
+            'url': 'entry/wxapp/delete',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            'cachetime': '0',
+            data: {
+              index: x.id,
+              type: "delte"
+            }, success: function (res) {
+              if (res.data == 1) {
+                let p=that.data.list;
+                p.splice(x.index,1)
+                that.setData({
+                  list:p
+                })
+                wx.showToast({
+                  title: '成功',
+                  icon: "success",
+                  mask: true,
+                  complete: function (res) {
+
+                  }
+                })
+
+              }
+            }
+          })
+        }
+      }
+    })
+
+
+  },
   onReachBottom: function (e) {
     let that = this;
     that.getDatas();
   },
   infoYemian: function (e) {
+    return false;
     var that = this;
     var index = e.currentTarget.dataset.id
     // console.log(that.data)
@@ -75,7 +118,7 @@ Page({
       data: {
         index: that.data.index,
         type: that.data.aType,
-        uid:that.data.type
+        uid: that.data.type
       },
       success: function (res) {
 

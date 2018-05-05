@@ -1,0 +1,81 @@
+.bottom image{
+width:80rpx;
+height:80rpx;
+
+}
+.ac button{
+  width:145rpx;
+height:80rpx;
+font-size:34rpx;
+background:red;
+color:white;
+}
+.ac{
+float: right;
+}
+
+
+.bottom text{
+  display: block;
+}
+.bottom button{
+ height: 100%;
+}
+.bottom{
+position:fixed;
+bottom:63rpx;
+
+background:#fff;
+display:flex;
+right:10rpx;
+border-radius:50%;
+
+}
+.bottom view{
+  flex:1;
+  text-align: center;
+}
+.tempTop image{
+    width:120rpx;
+    height:120rpx;
+    border-radius:50%;
+    margin-right:17rpx;
+}
+.content{
+  border-top:1px solid gray;
+}
+.tempLocation{
+  color: blue;
+}
+.tempContent {
+  overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+}
+.tempTop text:nth-child(2){
+  color: blue;
+  position: absolute;
+}
+.tempTop text:nth-child(3){
+color:black;
+padding:9rpx;
+font-size:31rpx;
+}
+.tempTop text:nth-child(4){
+color:blue;
+float:right;
+margin-top:10%;
+}
+
+
+.tempLocation image{
+  width:60rpx;
+height:60rpx;
+position:relative;
+top:16rpx;
+}
+.tempLocation text{
+  font-size: 34rpx;
+}
