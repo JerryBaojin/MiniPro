@@ -18,6 +18,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  toFabu:function(){
+  wx.switchTab({
+    url: '../activity/activity',
+  })
+  },
   onLoad: function (options) {
 
     var that = this;

@@ -22,7 +22,19 @@
   width: 100%;
   height: 100%;
 }
+.x{
+  position:fixed;
+bottom: 200rpx;
+right:10%;
+background:#36c53b;
+color:white;
+font-size:100rpx;
+height:68rpx;
+border-radius:50%;
 
+line-height:56rpx;
+
+}
 .dots {
   position: absolute;
   left: 0;
