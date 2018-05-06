@@ -1,4 +1,9 @@
   <view>
+  
+    <view>
+      <import src="headpic.wxml" />  
+      <template is="headPic" data="{{headImgs}}"/>
+    </view>
     <import src="list.wxml" />  
   <template is="itemsLists" data="{{list}}"/>
   </view>

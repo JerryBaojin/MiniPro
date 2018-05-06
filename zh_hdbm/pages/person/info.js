@@ -87,9 +87,15 @@ Page({
               p = "寻源主人";
               break;
             case "2":
-              p = "免费领养";
+              p = "待领养狗";
               break;
             case "3":
+              p = "待领养猫";
+              break;
+            case "4":
+              p = "其它宠物";
+              break;
+            case "5":
               p = "我想领养";
               break;
           }

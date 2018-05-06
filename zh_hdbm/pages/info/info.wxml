@@ -3,13 +3,13 @@
             <image  src="{{infos.headImg}}"></image>
             <text>{{infos.nickname}}</text>
                   <text>{{infos.time}}</text>
-                  <text>与TA距离{{distance}}m</text>
+                  <text style='display:none;'>与TA距离{{distance}}m</text>
                
 
         </view>
          <view class="tempLocation" bindtap='toMap'>
             <image src='../../resource/img/loc.png'></image>
-            <text>{{infos.location.address}}</text>
+            <text>{{infos.address}}</text>
           </view>
 
           <view class="content">

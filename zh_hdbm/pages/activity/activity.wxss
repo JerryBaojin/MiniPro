@@ -1,4 +1,59 @@
 /* zh_hdbm/pages/activity/activity.wxss */
+
+.header {
+  height: 300rpx;
+}
+
+.header_img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.swiper-container {
+  position: relative;
+}
+
+.swiper-container .swiper {
+  height: 300rpx;
+}
+
+.swiper-container .swiper .img {
+  width: 100%;
+  height: 100%;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  background: #000;
+  width: 120rpx;
+  margin: auto;
+  border-radius: 10rpx;
+  height: 20rpx;
+  justify-content: center;
+}
+
+.dot {
+  margin: 4rpx 8rpx;
+  width: 14rpx;
+  height: 14rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  transition: all 0.6s;
+}
+
+.active {
+  width: 34rpx;
+  background: #43b1ff;
+}
+
+.slide_icon_text {
+  font-size: 26rpx;
+}
 textarea{
   height:100px;
 background:#fff;

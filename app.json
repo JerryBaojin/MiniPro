@@ -1,6 +1,6 @@
 {
   "pages": [
-      "zh_hdbm/pages/logs/personal/personal",
+  
     "zh_hdbm/pages/index/index",
     "zh_hdbm/pages/person/info",
   "zh_hdbm/pages/logs/personal/list",
@@ -31,6 +31,7 @@
     "zh_hdbm/pages/logs/mylist/listinfo",
     "zh_hdbm/pages/guanyu/guanyu",
    "zh_hdbm/pages/logs/personal/info",
+      "zh_hdbm/pages/logs/personal/personal",
     "zh_hdbm/pages/list/list",
     "we7/pages/index/index",
     "we7/pages/user/index/index",

@@ -1,4 +1,6 @@
 <template name="itemsLists">
+
+
     <view class="tuijian_title1" wx:for="{{list}}" wx:key="{{item.value}}">
       <view bindtap="infoYemian" class="tuijian_banner" data-id="{{index}}" wx:for-index="index" wx:key="id">
         <view class="tempTop">
@@ -21,7 +23,7 @@
           <!--location  -->
           <view class="tempLocation">
             <image src='../../resource/img/loc.png'></image>
-            <text>{{item.location.address}}</text>
+            <text>{{item.address}}</text>
           </view>
           <!--  -->
           <view style="font-size:29rpx;">

@@ -37,15 +37,10 @@
             </swiper-item>
           </block>
         </swiper>
-
-        <!-- <view class="dots">
-          <block wx:for="{{slider}}" wx:key="unique">
-            <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
-          </block>
-        </view> -->
       </view>
     </view>
   </view>
+  
   <view class="address">
 
   </view>
@@ -73,8 +68,8 @@
   <!--——————————————推荐板块开始——————————  -->
 
 <view style="display:flex;" class='tuijian'>
-   <view   bindtap="loopTag" data-current="0">最新信息</view>
-
+   <view   bindtap="loopTag"  class="{{tagActiveNumber==0?'tagActive':''}}" bindtap='chooseItems' data-current="0">最新信息</view>
+   <view   bindtap="loopTag"  class="{{tagActiveNumber==1?'tagActive':''}}" bindtap='chooseItems' data-current="1">距离最近</view>
 </view>
 
 <view>

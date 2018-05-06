@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: ['寻狗启示', '寻源主人', '免费领养', '我想领养'],
+    array: ['寻狗启示', '寻源主人', '待领养狗', '待领养猫', '其它宠物', '我想领养'],
       uploadedImgs:[],
       location:'',
       index:"",
@@ -22,6 +22,7 @@ Page({
     let datas = { ...e.detail.value, ...that.data};
     delete datas['array'];
     delete datas['loc'];
+
     for (let v in datas){
    if(datas[v].length==0){
       wx.showModal({
@@ -31,13 +32,13 @@ Page({
      return false;
    }
     }
-if(openid==''){
-  wx.showModal({
-    content: "请重新进入程序",
-    showCancel: false
-  })
-  return false;
-}
+  if(openid==''){
+    wx.showModal({
+      content: "请重新进入程序",
+      showCancel: false
+    })
+    return false;
+  }
     app.util.request({
       'url': 'entry/wxapp/saveInfos',
       'cachetime': '0',
@@ -62,7 +63,6 @@ if(openid==''){
       }
   })},
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
