@@ -113,7 +113,7 @@ Page({
     var b = lng1 * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
     var r = 6378137;
     let p = (r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))).toFixed(0)
-    let n = p / 100;
+    let n = (p / 1000).toFixed(2);
     if (n > 0) {
       return "(" + n + "km" + ")";
     } else {

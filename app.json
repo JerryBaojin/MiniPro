@@ -1,6 +1,6 @@
 {
   "pages": [
-  
+
     "zh_hdbm/pages/index/index",
     "zh_hdbm/pages/person/info",
   "zh_hdbm/pages/logs/personal/list",
@@ -19,7 +19,7 @@
     "zh_hdbm/pages/success/success",
     "zh_hdbm/pages/info/info",
     "zh_hdbm/pages/logs/cash/cash",
-
+"zh_hdbm/pages/activity/input",
     "zh_hdbm/pages/logs/admin/admin",
     "zh_hdbm/pages/logs/edit/edit",
     "zh_hdbm/pages/logs/acinfo/acinfo",

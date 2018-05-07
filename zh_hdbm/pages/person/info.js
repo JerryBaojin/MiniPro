@@ -76,6 +76,7 @@ Page({
         type: "unsign"
       },
       success: function (res) {
+   
         res.data.map(function (v, k) {
           res.data[k].time = that.timestampToTime(v.time);
           let p = "";

@@ -1,27 +1,21 @@
-<form bindsubmit="formSubmit" bindreset="formReset">
-  <textarea placeholder="请详细说明你的情况" name="contents" focus="{{focus}}" />
-  <!--上传  -->
-  <view style="overflow:hidden;background:#fff;">
-    <view  bindtap="delete"class="uploaded" wx:for="{{uploadedImgs}}" data-pid="{{index}}" wx:key="{{index}}">
-      <image src="{{item}}"></image>
+<view>
+<view>选择发布类型</view>
+<!-- ——————————————首页分类———————————————— -->
+<swiper class="swiper-box" style='height:{{hei}}rpx' circular="true" duration="300" >
+  <swiper-item class="handover" wx:for="{{navs[0]}}" wx:key="{{index}}">
+ 
+    <view class="classification al">
+      <block wx:for="{{navs[0]}}" wx:key="{{item.value}}">
+
+        <view class="child_element" data-flid="{{index}}" data-id="{{item.id}}" data-name="{{item.type_name}}" bindtap="tzfl">
+          <view class="slide_icon">
+            <image class="img" src="{{url}}{{item.icon}}"></image>
+          </view>
+          <view class="slide_icon_text">{{item.type_name}}</view>
+        </view>
+      </block>
     </view>
-    <view class="addp" bindtap="uploadPic">+</view>
-  </view>
-  <!--tips  -->
-  <text>点击已上传的图片可进行删除</text>
-  <view class="lists" bindtap='toMap'>
-   <image class="a1" src="../../resource/img/loc.png"></image>
-  <view>{{loc}}</view>
+  </swiper-item>
+</swiper>
+
 </view>
-<view style='background:#fff;margin-bottom:15rpx;'>
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-    <view class="picker">
-      当前类型：{{array[index]}}
-    </view>
-  </picker>
-  </view>
-<view class='a2'>
-     <input name="phone" maxlength="11" type='number' placeholder='填写手机号码'></input>
-</view>
-<button formType="submit">发布信息</button>
-</form>

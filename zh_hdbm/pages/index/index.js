@@ -66,6 +66,7 @@ Page({
           type: "getAll"
         },
         success: function (res) {
+       
           res.data.map(function (v, k) {
             res.data[k].time = that.timestampToTime(v.time);
             let p = "";
@@ -96,7 +97,7 @@ Page({
             res.data[k].fdistance = that.getSpace(place.latitude, place.longitude)
             res.data[k].address = place.address + that.getDistance(place.latitude, place.longitude);
           })
-  
+
           res.data = res.data.sort(function (n, b) {
             return n.fdistance- b.fdistance;
           })
@@ -106,17 +107,20 @@ Page({
             newIndex: that.data.newIndex + 9,
             list: Lists
           })
-        }
+        },
+ 
       })
     } else {
-      let t = [...that.data.allDates, ...that.data.allDatesslice(that.data.newIndex, 10)]
+
+      let t = [...that.data.list, ...that.data.allDates.slice(that.data.newIndex, 10)]
+      //that.data.allDates.slice(that.data.newIndex, 10)
       that.setData({
         newIndex: that.data.newIndex + 9,
-        list: that.data.allDates.slice(that.data.newIndex, 10)
+        list: t
       })
     }
   }
-   , 
+   ,
 loopTag: function (e) {
   let that = this;
   that.setData({
@@ -136,11 +140,12 @@ onLoad: function (options) {
       that.setData({
         distance: { ...res }
       })
-  
+
     }, complete:function(res){
 
       that.reload();
       that.getDatas();
+      that.getAlldates();
     }
   })
 
@@ -183,7 +188,7 @@ timestampToTime: function(timestamp) {
 },
 getDistance: function ( lat2, lng2) {
   let res = this.data.distance
-  console.log(res, lat1)
+ 
   let lat1 = res.latitude || 0;
   let lng1 = res.longitude || 0;
   lat2 = lat2 || 0;
@@ -194,12 +199,14 @@ getDistance: function ( lat2, lng2) {
   var b = lng1 * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
   var r = 6378137;
   let p = (r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))).toFixed(0)
-  let n = p / 100;
+  let n = (p / 1000).toFixed(2);
+
   if (n > 0) {
     return "(" + n + "km" + ")";
   } else {
     return "(" + n + "m" + ")";
   }
+ 
 },
 getSpace: function (lat2, lng2) {
   let res = this.data.distance
@@ -260,7 +267,7 @@ getDatas: function(e) {
         res.data[k].location = place
         res.data[k].fdistance = that.getSpace(place.latitude, place.longitude)
         res.data[k].address = place.address + that.getDistance(place.latitude, place.longitude);
-        
+
       })
       if (res.data.length >= 1 && res.data.length < 10) {
         that.setData({
@@ -277,7 +284,7 @@ getDatas: function(e) {
     },
   })
 }
-   , 
+   ,
 reload: function (e) {
   var that = this
   wx.login({
@@ -572,7 +579,7 @@ tzfl: function (e) {
         wx.navigateTo({
           url: 'classification?id=' + id + '&name=' + name + '&tag=' + 3
         })
-      
+
       }
     })
     return false;
@@ -595,36 +602,30 @@ tzfl: function (e) {
   // }
 
 },
+
 sousuo: function (e) {
   var that = this;
   if (e.detail.value == '' && that.data.back.length >= 1) {
     that.setData({
       list: that.data.back,
-      index: that.data.backIndex
+      index:that.data.backIndex
     })
-    return false;
+  }else{
+
+    that.setData({
+      list:that.data.allDates.filter(function(v,k){
+        let s=new RegExp( e.detail.value );
+          return s.test(v.types) || s.test(v.contents);
+      }),
+    index:-1,
+      backIndex: that.data.index,
+        back: that.data.list
+    })
   }
-  app.util.request({
-    'url': 'entry/wxapp/activity',//接口
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    'cachetime': '0',
-    data: { keywords: e.detail.value },//传给后台的值，实时变化
+  //
 
-    success: function (res) {
-      if (res.data.length >= 1) {
-        that.setData({
-          back: that.data.list,
-          backIndex: that.data.index,
-          list: res.data,
-          index: -1
-        })
 
-      }
-    },
 
-  })
 
 },
 

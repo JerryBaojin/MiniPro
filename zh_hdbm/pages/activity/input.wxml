@@ -1,0 +1,21 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <textarea placeholder="请详细说明你的情况" name="contents" focus="{{focus}}" />
+  <!--上传  -->
+  <view style="overflow:hidden;background:#fff;">
+    <view  bindtap="delete"class="uploaded" wx:for="{{uploadedImgs}}" data-pid="{{index}}" wx:key="{{index}}">
+      <image src="{{item}}"></image>
+    </view>
+    <view class="addp" bindtap="uploadPic">+</view>
+  </view>
+  <!--tips  -->
+  <text>点击已上传的图片可进行删除</text>
+  <view class="lists" bindtap='toMap'>
+   <image class="a1" src="../../resource/img/loc.png"></image>
+  <view>{{loc}}</view>
+</view>
+
+<view class='a2'>
+     <input name="phone" maxlength="11" type='number' placeholder='填写手机号码'></input>
+</view>
+<button formType="submit">发布信息</button>
+</form>

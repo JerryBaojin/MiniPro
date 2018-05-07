@@ -7,7 +7,7 @@
     <import src="list.wxml" />  
     <template is="itemsLists" data="{{list}}"/>
     <view class="x" bindtap='toFabu'>
-    +
+      <image src="add.png"></image>
     </view> 
   </view>
   

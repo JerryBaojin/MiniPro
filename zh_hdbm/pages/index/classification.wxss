@@ -28,11 +28,18 @@ bottom: 200rpx;
 right:10%;
 background:#36c53b;
 color:white;
-font-size:100rpx;
-height:68rpx;
+font-size:86rpx;
+width:62rpx;
+height:62rpx;
+
 border-radius:50%;
 
 line-height:56rpx;
+
+}
+.x image{
+  width:62rpx;
+height:62rpx;
 
 }
 .dots {
