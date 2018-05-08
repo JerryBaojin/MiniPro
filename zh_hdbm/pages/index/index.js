@@ -38,6 +38,7 @@ Page({
     let that = this;
     let types = "";
     that.setData({
+        tagActiveNumber: e.currentTarget.dataset.current,
       list:[],
       allDates: [],
       index: 1,
@@ -48,13 +49,13 @@ Page({
     } else {
       that.getAlldates();
     }
-    that.setData({
-      tagActiveNumber: e.currentTarget.dataset.current,
-    })
+  
   },
   getAlldates: function (e) {
     let that = this;
-
+    if(that.data.tagActiveNumber==0){
+      return false;
+    }
     if (that.data.allDates.length == 0) {
       app.util.request({
         'url': 'entry/wxapp/infos',
@@ -66,7 +67,7 @@ Page({
           type: "getAll"
         },
         success: function (res) {
-       
+
           res.data.map(function (v, k) {
             res.data[k].time = that.timestampToTime(v.time);
             let p = "";
@@ -108,7 +109,7 @@ Page({
             list: Lists
           })
         },
- 
+
       })
     } else {
 
@@ -154,6 +155,14 @@ onShow: function (options) {
   var that = this
 
 },
+onPullDownRefresh:function(e){
+  let that = this;
+  if (that.data.tagActiveNumber == 0) {
+    that.getDatas();
+  } else {
+    that.getAlldates();
+  }
+},
 onReachBottom: function (e) {
   let that = this;
   if (that.data.tagActiveNumber == 0) {
@@ -188,7 +197,7 @@ timestampToTime: function(timestamp) {
 },
 getDistance: function ( lat2, lng2) {
   let res = this.data.distance
- 
+
   let lat1 = res.latitude || 0;
   let lng1 = res.longitude || 0;
   lat2 = lat2 || 0;
@@ -206,7 +215,7 @@ getDistance: function ( lat2, lng2) {
   } else {
     return "(" + n + "m" + ")";
   }
- 
+
 },
 getSpace: function (lat2, lng2) {
   let res = this.data.distance

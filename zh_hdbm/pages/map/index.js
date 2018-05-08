@@ -5,34 +5,71 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tagActiveNumber:0,
+    imgs:["../images/location.png","../images/master.png"],
     markers: [{
       id:1,
       latitude: 29.58015,
       longitude: 105.05844,
       iconPath: '../images/location.png',
-      callout:{
-        content:"as",
-
-      }
-      ,title:"Asd"
-      
     }],
-
-    region: ['广东省','','定位中'],
-    customItem: '全部',
+    controls: [{
+      id: 1,
+      iconPath: '../images/dw.png',
+      position: {
+        left: 0,
+        top: 300,
+        width: 50,
+        height: 50
+      },
+      clickable: true
+    },{
+      id: 2,
+      iconPath: '../images/fresh.png',
+      position: {
+        left: 0,
+        top: 400,
+        width: 50,
+        height: 50
+      },
+      clickable: true
+    }],
     allDates:[],
     distance:[]
   },
+  onReady: function (e) {
+  this.mapCtx = wx.createMapContext('myMap')
+},
+chooseItems:function(e){
+
+    this.setData({
+      tagActiveNumber: e.currentTarget.dataset.current
+    })
+
+    this.getAlldates();
+
+},
+  ctap:function(e){
+      e.controlId==1?this.mapCtx.moveToLocation():this.getAlldates();
+    },
+  tap:function(d){
+    let datas=this.data.allDates.find((v)=>{
+      return v.id==d.markerId
+    })
+
+    wx.setStorageSync("details", datas);
+    wx.navigateTo({
+      url: "../info/info",
+    })
+  },
   onLoad: function (options) {
     let that = this;
-    that.getAlldates();
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
         let latitude = res.latitude
         let longitude = res.longitude
         let op = latitude + ',' + longitude;
-        console.log(res)
         that.setData({
           distance: { ...res }
         })
@@ -53,20 +90,15 @@ Page({
 
           }
         })
+      },complete:function(res){
+          that.getAlldates();
       }
     })
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
   },
-  getCenterLocation: function () {
-    this.mapCtx.getCenterLocation({
-      success: function (res) {
-        console.log(res.longitude)
-        console.log(res.latitude)
-      }
-    })
-  },
+
   moveToLocation: function () {
     this.mapCtx.moveToLocation()
   },
@@ -96,7 +128,7 @@ Page({
       }]
     })
   },
-  
+
   bindRegionChange:function(res){
    this.setData({
      region:res.detail.value
@@ -122,7 +154,7 @@ Page({
         success: function (res) {
 
           res.data.map(function (v, k) {
-          //  res.data[k].time = that.timestampToTime(v.time);
+            res.data[k].time = that.timestampToTime(v.time);
             let p = "";
             switch (v.types) {
               case "0":
@@ -144,95 +176,118 @@ Page({
                 p = "我想领养";
                 break;
             }
+            res.data[k].typess = v.types;
             res.data[k].types = p;
             res.data[k].imgs = JSON.parse(v.imgs.replace(/&quot;/g, '"'));
             let place = JSON.parse(v.location.replace(/&quot;/g, '"'));
             res.data[k].location = place
-         //   res.data[k].fdistance = that.getSpace(place.latitude, place.longitude)
-         //   res.data[k].address = place.address + that.getDistance(place.latitude, place.longitude);
+            res.data[k].fdistance = that.getSpace(place.latitude, place.longitude)
+            res.data[k].address = place.address + that.getDistance(place.latitude, place.longitude);
           })
 
-          res.data = res.data.sort(function (n, b) {
-            return n.fdistance - b.fdistance;
+          res.data = res.data.filter(function (v) {
+            return  v.fdistance<=5000
           })
-          let Lists = res.data.slice(that.data.newIndex, 10);
+
+            let prepareDates=new Array();
+          let showDatas=res.data.filter((v)=>{
+            if(that.data.tagActiveNumber==0){
+              return v.typess!=1
+            }else{
+              return v.typess==1
+            }
+          })
+          //组装
+          showDatas.map((v,k)=>{
+              prepareDates.push({
+                id:v.id,
+                latitude: v.location.latitude,
+                longitude:v.location.longitude,
+                iconPath: that.data.imgs[that.data.tagActiveNumber]
+              })
+          })
+
           that.setData({
             allDates: res.data,
-            newIndex: that.data.newIndex + 9,
-            list: Lists
+            markers:prepareDates
           })
         },
 
       })
-    } 
-  },
-  sousuo: function (e) {
-  var that = this;
-  if (e.detail.value == '' && that.data.back.length >= 1) {
-    that.setData({
-      list: that.data.back,
-      index: that.data.backIndex
-    })
-  } else {
+    }else{
+      let prepareDates=new Array();
+      let showDatas=that.data.allDates.filter((v)=>{
+        if(that.data.tagActiveNumber==0){
+          return v.typess!=1
+        }else{
+          return v.typess==1
+        }
+      })
+      //组装
+      showDatas.map((v,k)=>{
+          prepareDates.push({
+            id:v.id,
+            latitude: v.location.latitude,
+            longitude:v.location.longitude,
+            iconPath: that.data.imgs[that.data.tagActiveNumber]
+          })
+      })
+      that.setData({
+        markers:prepareDates
+      })
 
-    that.setData({
-      list: that.data.allDates.filter(function (v, k) {
-        let s = new RegExp(e.detail.value);
-        return s.test(v.types) || s.test(v.contents);
-      }),
-  
-    })
+    }
+  },
+
+timestampToTime: function(timestamp) {
+  var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+  var Y = date.getFullYear() + '-';
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+  var D = date.getDate() + ' ';
+  var h = date.getHours() + ':';
+  var m = date.getMinutes() + ':';
+  var s = date.getSeconds();
+  return Y + M + D + h + m + s;
+},
+getSpace: function ( lat2, lng2) {
+  let res = this.data.distance
+
+  let lat1 = res.latitude || 0;
+  let lng1 = res.longitude || 0;
+  lat2 = lat2 || 0;
+  lng2 = lng2 || 0;
+  var rad1 = lat1 * Math.PI / 180.0;
+  var rad2 = lat2 * Math.PI / 180.0;
+  var a = rad1 - rad2;
+  var b = lng1 * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
+  var r = 6378137;
+  let p = (r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))).toFixed(0)
+  return p;
+},
+getDistance: function ( lat2, lng2) {
+  let res = this.data.distance
+
+  let lat1 = res.latitude || 0;
+  let lng1 = res.longitude || 0;
+  lat2 = lat2 || 0;
+  lng2 = lng2 || 0;
+  var rad1 = lat1 * Math.PI / 180.0;
+  var rad2 = lat2 * Math.PI / 180.0;
+  var a = rad1 - rad2;
+  var b = lng1 * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
+  var r = 6378137;
+  let p = (r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))).toFixed(0)
+  let n = (p / 1000).toFixed(2);
+
+  if (n > 0) {
+    return "(" + n + "km" + ")";
+  } else {
+    return "(" + n + "m" + ")";
   }
 
 },
 
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
-    
+
   }
 })

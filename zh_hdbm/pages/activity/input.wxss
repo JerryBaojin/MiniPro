@@ -13,7 +13,13 @@
 .swiper-container {
   position: relative;
 }
-
+.locations{
+font-size:31rpx;
+max-width: 97%;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+}
 .swiper-container .swiper {
   height: 300rpx;
 }

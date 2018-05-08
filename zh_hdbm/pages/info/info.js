@@ -11,7 +11,7 @@ Page({
   },
   onLoad:function(){
     let that=this;
-    let p=wx.getStorageSync("details");
+    let p=wx.getStorageSync("details") || wx.navigateBack();
 
     this.setData({
       infos:p
@@ -28,11 +28,11 @@ Page({
          distance:{...res}
        })
       },complete:function(res){
-   
+
       }
     })
   }
-  , 
+  ,
   getDistance: function (lat2, lng2) {
     let res = this.data.distance
 
@@ -80,16 +80,16 @@ Page({
   toMap:function(e){
     let that=this;
     wx.openLocation({
-      latitude: that.data.infos.location.latitude, // 纬度，范围为-90~90，负数表示南纬  
-      longitude: that.data.infos.location.longitude, // 经度，范围为-180~180，负数表示西经  
-      scale: 28, // 缩放比例            
-    })  
+      latitude: that.data.infos.location.latitude, // 纬度，范围为-90~90，负数表示南纬
+      longitude: that.data.infos.location.longitude, // 经度，范围为-180~180，负数表示西经
+      scale: 28, // 缩放比例
+    })
   },
   share:function(e){
     this.onShareAppMessage()
   },
   fanhui:function(e){
-    wx.navigateBack();//返回上一页  
+    wx.navigateBack();//返回上一页
   },
  phonecall:function(e){
   let that=this;

@@ -11,9 +11,9 @@
   <text>点击已上传的图片可进行删除</text>
   <view class="lists" bindtap='toMap'>
    <image class="a1" src="../../resource/img/loc.png"></image>
-  <view>{{loc}}</view>
-</view>
 
+</view>
+<view class="locations">{{loc}}</view>
 <view class='a2'>
      <input name="phone" maxlength="11" type='number' placeholder='填写手机号码'></input>
 </view>

@@ -9,7 +9,7 @@ App({
     console.log(getCurrentPages())
   },
   onError: function (msg) {
-    console.log(msg)
+ 
   },
   util: require('we7/resource/js/util.js'),
   siteInfo: require('siteinfo.js'),

@@ -1,7 +1,8 @@
 {
   "pages": [
-    "zh_hdbm/pages/map/index",
+ 
     "zh_hdbm/pages/index/index",
+      "zh_hdbm/pages/map/index",
     "zh_hdbm/pages/person/info",
   "zh_hdbm/pages/logs/personal/list",
     "zh_hdbm/pages/logs/admin/scancode",
@@ -61,17 +62,18 @@
         "selectedIconPath": "zh_hdbm/pages/images/shouye-fill@2x.png"
       },
       {
-        "pagePath": "zh_hdbm/pages/activity/activity",
-        "text": "发布",
-        "iconPath": "zh_hdbm/pages/images/jia1.png",
-        "selectedIconPath": "zh_hdbm/pages/images/jia.png"
-      },
-      {
         "pagePath": "zh_hdbm/pages/map/index",
         "text": "地图",
         "iconPath": "zh_hdbm/pages/images/fujian.png",
         "selectedIconPath": "zh_hdbm/pages/images/fs.png"
       },
+      {
+        "pagePath": "zh_hdbm/pages/activity/activity",
+        "text": "发布",
+        "iconPath": "zh_hdbm/pages/images/jia1.png",
+        "selectedIconPath": "zh_hdbm/pages/images/jia.png"
+      },
+
       {
         "pagePath": "zh_hdbm/pages/logs/personal/personal",
         "text": "我的",

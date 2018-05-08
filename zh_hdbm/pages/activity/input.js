@@ -10,7 +10,7 @@ Page({
       pindex:0,
       uploadedImgs:[],
       location:'',
-   
+      shareTimes:0,
       loc:"位置"
   },
 
@@ -19,6 +19,8 @@ Page({
      */
     onLoad: function (options) {
       let that=this;
+      let p=options.id || wx.navigateBack();
+
      let times= wx.getStorageSync("sharePage");
      let ptitle='';
      if (options.id==0){
@@ -41,9 +43,8 @@ Page({
      wx.setNavigationBarTitle({
        title: ptitle
      })
-
       that.setData({
-        pindex:options.id
+        pindex:p
       })
 
     },
@@ -82,7 +83,7 @@ Page({
               content: "请重新进入程序",
               showCancel: false
             })
-          }else if(res.data==-2){
+          }else if(that.data.shareTimes<=2){
             wx.showModal({
               content: "转发微信群三个方可发布信息",
               showCancel: false
@@ -101,7 +102,7 @@ Page({
     })
   },
   toMap:function(e){
-    console.log(e)
+
     var that = this
       wx.chooseLocation({
         success: function (res) {
@@ -120,7 +121,6 @@ Page({
 
     let index=e.currentTarget.dataset.pid;
     let that=this;
-    console.log(that.data)
     wx.showModal({
       title:"提示",
       content:"确认删除此图片吗?",
@@ -184,23 +184,27 @@ Page({
   },
 
    onShareAppMessage: function () {
-    console.log(this.data)
+     let that=this;
     return {
       title: wx.getStorageSync("seller").copyright,
       path: '/zh_hdbm/pages/index/index',
       success: function (res) {
-        app.util.request({
-          'url': 'entry/wxapp/recordShare',//接口
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          'cachetime': '0',
-          data: { openid: wx.getStorageSync("openid") },//传给后台的值，实时变化
-          success: function (res) {
-            let p = wx.getStorageSync("sharePage");
-            wx.setStorageSync("sharePage", p + 1)
-          }
+        let p=that.data.shareTimes;
+        that.setData({
+          shareTimes:p++
         })
+        // app.util.request({
+        //   'url': 'entry/wxapp/recordShare',//接口
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   'cachetime': '0',
+        //   data: { openid: wx.getStorageSync("openid") },//传给后台的值，实时变化
+        //   success: function (res) {
+        //     let p = wx.getStorageSync("sharePage");
+        //     wx.setStorageSync("sharePage", p + 1)
+        //   }
+        // })
       },
       fail: function (res) {
         // 转发失败
