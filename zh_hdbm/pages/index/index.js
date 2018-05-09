@@ -312,16 +312,20 @@ reload: function (e) {
   var that = this
   wx.login({
     success: function (res) {
-      console.log(res)
+
+
       var code = res.code
       wx.getUserInfo({
         success: function (res) {
+    
           var userInfo = res.userInfo
           var nickName = userInfo.nickName
           var avatarUrl = userInfo.avatarUrl
           var gender = userInfo.gender //性别 0：未知、1：男、2：女
           var province = userInfo.province
           var city = userInfo.city
+
+
           var country = userInfo.country
           that.setData({
             avatarUrl: userInfo.avatarUrl,
@@ -333,12 +337,11 @@ reload: function (e) {
             'cachetime': '0',
             data: { code: code },
             success: function (res) {
-              console.log(res)
               var openid = res.data.openid
               that.setData({
                 openid: res.data.openid,
-                img: res.data.avatarUrl,
-                name: res.data.nickName
+                img: avatarUrl,
+                name: nickName
               })
               wx.setStorageSync("key", res.data.session_key)
               wx.setStorageSync("openid", res.data.openid)

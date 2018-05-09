@@ -4,6 +4,7 @@ Page({
   /**
    * 页面的初始数据
    */
+  
   data: {
     tagActiveNumber:0,
     imgs:["../images/location.png","../images/master.png"],
