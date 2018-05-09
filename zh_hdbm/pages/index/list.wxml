@@ -21,7 +21,7 @@
         </view>
 
           <!--location  -->
-          <view class="tempLocation">
+          <view class="tempLocation" bindtap='toMap' data-pid='{{index}}' style='color:blue;'>
             <image src='../../resource/img/loc.png'></image>
             <text>{{item.address}}</text>
           </view>

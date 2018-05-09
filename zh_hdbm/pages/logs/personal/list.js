@@ -35,6 +35,15 @@ Page({
 
     that.getDatas();
   },
+  toMap: function (e) {
+    console.log(e)
+    let that = this;
+    wx.openLocation({
+      latitude: Number(that.data.list[e.currentTarget.dataset.pid].location.latitude), // 纬度，范围为-90~90，负数表示南纬
+      longitude: Number(that.data.list[e.currentTarget.dataset.pid].location.longitude), // 经度，范围为-180~180，负数表示西经
+      scale: 28, // 缩放比例
+    })
+  },
   del: function (e) {
     let x=e.currentTarget.dataset;
     let that = this;

@@ -79,9 +79,10 @@ Page({
 
   toMap:function(e){
     let that=this;
+    console.log(that);
     wx.openLocation({
-      latitude: that.data.infos.location.latitude, // 纬度，范围为-90~90，负数表示南纬
-      longitude: that.data.infos.location.longitude, // 经度，范围为-180~180，负数表示西经
+      latitude: Number(that.data.infos.location.latitude), // 纬度，范围为-90~90，负数表示南纬
+      longitude: Number(that.data.infos.location.longitude), // 经度，范围为-180~180，负数表示西经
       scale: 28, // 缩放比例
     })
   },

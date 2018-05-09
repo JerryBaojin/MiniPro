@@ -49,13 +49,20 @@ Page({
     } else {
       that.getAlldates();
     }
-  
+
+  },
+  toMap: function (e) {
+    console.log(e)
+    let that = this;
+    wx.openLocation({
+      latitude: Number(that.data.list[e.currentTarget.dataset.pid].location.latitude), // 纬度，范围为-90~90，负数表示南纬
+      longitude: Number(that.data.list[e.currentTarget.dataset.pid].location.longitude), // 经度，范围为-180~180，负数表示西经
+      scale: 28, // 缩放比例
+    })
   },
   getAlldates: function (e) {
     let that = this;
-    if(that.data.tagActiveNumber==0){
-      return false;
-    }
+
     if (that.data.allDates.length == 0) {
       app.util.request({
         'url': 'entry/wxapp/infos',
@@ -103,11 +110,18 @@ Page({
             return n.fdistance- b.fdistance;
           })
           let Lists = res.data.slice(that.data.newIndex, 10);
-          that.setData({
-            allDates: res.data,
-            newIndex: that.data.newIndex + 9,
-            list: Lists
-          })
+          if(that.data.tagActiveNumber==0){
+            that.setData({
+              allDates: res.data
+            })
+          }else{
+            that.setData({
+              allDates: res.data,
+              newIndex: that.data.newIndex + 9,
+              list: Lists
+            })
+          }
+
         },
 
       })
@@ -613,20 +627,22 @@ tzfl: function (e) {
 },
 
 sousuo: function (e) {
+
   var that = this;
+  console.log(e);
   if (e.detail.value == '' && that.data.back.length >= 1) {
     that.setData({
       list: that.data.back,
       index:that.data.backIndex
     })
   }else{
-
+    console.log(that.data.allDates)
     that.setData({
       list:that.data.allDates.filter(function(v,k){
         let s=new RegExp( e.detail.value );
           return s.test(v.types) || s.test(v.contents);
       }),
-    index:-1,
+      index:-1,
       backIndex: that.data.index,
         back: that.data.list
     })
