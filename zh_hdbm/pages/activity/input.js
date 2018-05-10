@@ -1,7 +1,7 @@
 // zh_hdbm/pages/activity/activity.js
 var app = getApp()
 var util = require('../utils/util.js');
-var bmap = require('../../lib/bmap-wx.js');
+var QQMapWX  = require('../../lib/qqmap-wx-jssdk.js');
 Page({
 
   /**
@@ -20,31 +20,32 @@ Page({
      */
     onLoad: function (options) {
       let that=this;
-      var BMap = new bmap.BMapWX({
-          ak: '2ZaqL53Wr3gIv8y9K2PSqkOyXp7on40H'
-      });
-      BMap.regeocoding({
-           fail: function(){
-             wx.showModal({
-               content:"获取地理信息失败",
-               showCancel:false
-             })
-           },
-           success: function(res){
-             that.setData({
-               location:{
-                 latitude:res['wxMarkerData'][0]['latitude'],
-                 longitude:res['wxMarkerData'][0]['longitude'],
-                 address:res['wxMarkerData'][0]['address'],
-                 name:res['wxMarkerData'][0]['desc']
-               },
-                loc:res['wxMarkerData'][0]['address']
-             })
-           }
-       });
-
-
-
+    var  qqmapsdk = new QQMapWX({
+            key: 'EBKBZ-UMFWV-OK4PT-UBQ7T-GI25K-EUBRZ'
+        });
+        wx.getLocation({
+          type: 'wgs84',
+        success: function(res) {
+          qqmapsdk.reverseGeocoder({
+              location: {
+                  latitude: res.latitude,
+                  longitude: res.longitude
+              },
+              success: function(resA) {
+                console.log(resA)
+                  that.setData({
+                    location:{
+                      latitude:res.latitude,
+                      longitude: res.longitude,
+                      address:resA['result']['address'],
+                      name:resA['result']['formatted_addresses']['recommend']
+                    },
+                     loc:resA['result']['address']
+                  })
+              }
+          });
+        }
+        })
 
 
       let p=options.id || wx.navigateBack();
