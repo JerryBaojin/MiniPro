@@ -1,6 +1,7 @@
 // zh_hdbm/pages/activity/activity.js
 var app = getApp()
 var util = require('../utils/util.js');
+var bmap = require('../../lib/bmap-wx.js');
 Page({
 
   /**
@@ -19,6 +20,33 @@ Page({
      */
     onLoad: function (options) {
       let that=this;
+      var BMap = new bmap.BMapWX({
+          ak: '2ZaqL53Wr3gIv8y9K2PSqkOyXp7on40H'
+      });
+      BMap.regeocoding({
+           fail: function(){
+             wx.showModal({
+               content:"获取地理信息失败",
+               showCancel:false
+             })
+           },
+           success: function(res){
+             that.setData({
+               location:{
+                 latitude:res['wxMarkerData'][0]['latitude'],
+                 longitude:res['wxMarkerData'][0]['longitude'],
+                 address:res['wxMarkerData'][0]['address'],
+                 name:res['wxMarkerData'][0]['desc']
+               },
+                loc:res['wxMarkerData'][0]['address']
+             })
+           }
+       });
+
+
+
+
+
       let p=options.id || wx.navigateBack();
 
      let times= wx.getStorageSync("sharePage");
@@ -102,11 +130,10 @@ Page({
     })
   },
   toMap:function(e){
-
     var that = this
       wx.chooseLocation({
         success: function (res) {
-          console.log(res);
+
           that.setData({
             location:res,
             loc:res.address
@@ -193,18 +220,6 @@ Page({
         that.setData({
           shareTimes:p++
         })
-        // app.util.request({
-        //   'url': 'entry/wxapp/recordShare',//接口
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   'cachetime': '0',
-        //   data: { openid: wx.getStorageSync("openid") },//传给后台的值，实时变化
-        //   success: function (res) {
-        //     let p = wx.getStorageSync("sharePage");
-        //     wx.setStorageSync("sharePage", p + 1)
-        //   }
-        // })
       },
       fail: function (res) {
         // 转发失败
