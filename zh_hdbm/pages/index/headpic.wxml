@@ -1,0 +1,19 @@
+<template name="headPic">
+
+<view wx:if="{{headImgs.length > 0}}">
+  <!--轮播图  -->
+  <view class="header rel">
+    <view class="header_img ab">
+      <view class="swiper-container">
+        <swiper autoplay="true" interval="5000" indicator-color="#fff" indicator-active-color="#43B1FF" indicator-dots="true" duration="500" circular="true" current="{{swiperCurrent}}"  class="swiper">
+          <block wx:for="{{headImgs}}" wx:key="index">
+            <swiper-item>
+              <image mode="aspectFill" src="{{item}}" class="img"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+</view> 
+</template>  

@@ -1,0 +1,41 @@
+/* zh_hdbm/pages/refer/intro/intro.wxss */
+.intro{
+  margin-top: 20rpx;
+  background-color: white;
+  padding: 20rpx 30rpx;
+}
+.text{
+  font-size: 28rpx;
+  color: #333;
+}
+.tishi{
+  font-size: 26rpx;
+  color: #ccc;
+  text-align: right;
+}
+.num{
+  width: 100%;
+  color: #333;  
+}
+.comp{
+  width: 300rpx;
+  height: 70rpx;
+  background-color: #41b0ff;
+  color: white;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 30rpx;
+}
+.comp_flex{
+  display: flex;
+  justify-content: flex-end;
+  padding: 30rpx;
+}
+ .comp text:nth-child(1){
+   margin-right: 30rpx;
+ }
+ .navigator-hover{
+  background-color: white;
+  opacity: 1;
+}

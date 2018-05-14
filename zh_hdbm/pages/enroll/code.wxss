@@ -1,0 +1,135 @@
+/* zh_hdbm/pages/code/code.wxss */
+.code{
+  padding: 30rpx 20rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+.code_box{
+  width: 92%;
+  background-color: white;
+  padding: 20rpx 30rpx 0rpx;
+}
+.code_reg{
+  font-size: 30rpx;
+}
+.code_user{
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  padding-bottom: 20rpx;
+}
+.code_content{
+  padding: 20rpx 30rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 5rpx dashed #eeeeee;
+}
+.code_num{
+  font-size: 36rpx;
+  }
+.code_img{
+    width: 300rpx;
+    height: 300rpx;
+    margin-top: 10rpx;
+    border: 1rpx solid #eeeeee;
+    overflow: hidden;
+}
+.code_img image{
+  width: 100%;
+  height: 100%;
+
+}
+.code_join{
+  font-size: 24rpx;
+  color: #0396ff;
+}
+.code_info{
+  padding-right: 30rpx;
+}
+.code_title{
+  padding: 20rpx 0rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.code_title image{
+  width: 20rpx;
+  height: 30rpx;
+}
+.code_time{
+  padding: 20rpx 0rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  display: flex;
+}
+.code_time>view:nth-child(1){
+  margin-right: 45rpx;
+}
+.code_add{
+  padding: 20rpx 0rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  display: flex;
+  justify-content: space-between;
+}
+.code_add image{width: 20rpx;height: 30rpx;}
+.code_address{
+  display: flex;
+}
+.code_address>view:nth-child(1){
+  margin-right: 45rpx;
+  width: 130rpx;
+}
+.code_address>view:nth-child(2){
+  width: 430rpx;
+}
+.code_contact{
+  padding: 20rpx 0rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.code_impor{
+  display: flex;
+}
+.code_impor>view:nth-child(1){
+  margin-right: 70rpx;
+}
+.code_contactri{display: flex;align-items: center;}
+.code_contactri>image{
+  width: 20rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+}
+.code_footer{
+  width: 99%;
+  height: 50rpx;
+  position: fixed;
+  bottom: 30rpx;
+  left: 0rpx;
+  display: flex;
+  align-items: center;
+  padding: 0rpx 10rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+.footer_left{
+  display: flex;
+  margin: 35rpx;
+  }
+.footer_image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.footer_image2{
+  width: 50rpx;
+  height: 40rpx;
+}
+.footer_left button{
+  background: none;
+  font-size: 26rpx;
+  padding: 0;
+  line-height: 1.5;
+}
+.footer_left button::after{
+  border: none;
+}

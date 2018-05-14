@@ -1,0 +1,29 @@
+<view>
+     <view class="tempTop">
+            <image  src="{{infos.headImg}}"></image>
+            <text>{{infos.nickname}}</text>
+            <text>{{infos.time}}</text>
+              <view class='ac'>
+           <text>{{infos.status==0?"未审核":"提交"}}</text>
+           <button bindtap='del'>删除</button>
+        </view>
+        </view>
+      
+       
+         <view class="tempLocation" bindtap='toMap'>
+            <image src='../../resource/img/loc.png'></image>
+            <text>{{infos.location.address}}</text>
+          </view>
+
+          <view class="content">
+          <text>{{infos.contents}}</text>
+          </view>
+          <view wx:for="{{infos.imgs}}" wx:key="index">
+                   <image  src="{{item}}"></image>
+          </view>
+
+          <view class="bottom" bindtap='main'>
+              <image src="../images/shouye@2x.png"></image>
+          </view> 
+</view>
+ 

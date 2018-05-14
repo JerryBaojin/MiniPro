@@ -1,0 +1,34 @@
+<template name="itemsLists">
+
+
+    <view class="tuijian_title1" wx:for="{{list}}" wx:key="{{item.value}}">
+      <view bindtap="infoYemian" class="tuijian_banner" data-id="{{index}}" wx:for-index="index" wx:key="id">
+        <view class="tempTop">
+            <image  src="{{item.headImg}}"></image>
+            <text>{{item.nickname}}</text>
+            <text style=''>{{item.types}}</text>
+             <!--  -->
+         <view style="font-size:29rpx;position:absolute;right: 0rpx; top:56%;color:#cacaca;">{{item.time}}
+          </view>
+        </view>
+         
+        <!--内容  -->
+        <view class="tempContent">
+      {{item.contents}}
+        </view>
+     
+       <view class="timages">
+      <view wx:for="{{item.imgs}}" wx:key="index">
+        <image class="itemPic" src="{{item}}"></image>
+      </view>
+        </view>
+
+          <!--location  -->
+          <view class="tempLocation" bindtap='toMap' data-pid='{{index}}' style='color:blue;'>
+            <image src='../../resource/img/loc.png'></image>
+            <text>{{item.address}}</text>
+          </view>
+         
+      </view>
+    </view>
+</template>

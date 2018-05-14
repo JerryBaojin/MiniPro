@@ -1,0 +1,34 @@
+.container{
+  background: #fff;
+  height: 100%;
+  font-size: 31rpx;
+  position: relative;
+}
+.container view{
+  margin-bottom: 12rpx;
+   width: 100%; 
+   height: 65rpx;
+   padding-top: 20rpx;
+}
+.container text{
+  float: left;
+  padding-left: 15rpx;
+  padding-top:8rpx;
+}
+.nick{
+  color: #cacaca;
+}
+.container input{
+  text-indent: 20rpx;
+    float: left;
+
+  padding: 8rpx;
+}
+
+textarea{
+
+  padding-top:10%;
+  padding: 10%;
+}
+
+

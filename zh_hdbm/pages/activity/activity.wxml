@@ -1,0 +1,21 @@
+<view>
+<view style='background:#ee404a;color:#fff;padding-left:32rpx;'>选择发布类型</view>
+<!-- ——————————————首页分类———————————————— -->
+<swiper class="swiper-box"  circular="true" duration="300" >
+  <swiper-item class="handover" wx:for="{{navs[0]}}" wx:key="{{index}}">
+ 
+    <view class="classification al">
+      <block wx:for="{{navs[0]}}" wx:key="{{item.value}}">
+
+        <view class="child_element" data-flid="{{index}}" data-id="{{item.id}}" data-name="{{item.type_name}}" bindtap="tzfl">
+          <view class="slide_icon">
+            <image class="img" src="{{url}}{{item.icon}}"></image>
+          </view>
+          <view class="slide_icon_text">{{item.type_name}}</view>
+        </view>
+      </block>
+    </view>
+  </swiper-item>
+</swiper>
+
+</view>

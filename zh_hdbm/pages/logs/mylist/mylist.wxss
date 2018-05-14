@@ -1,0 +1,139 @@
+/**index.wxss**/ 
+page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.bbb{
+  color: #41B0FF;
+  text-align: center;
+  font-size: 28rpx;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-tab__content{
+    padding-top: 60px;
+}
+.weui-navbar__slider{
+  width: 120rpx;
+}
+.weui-tab__content{
+  padding-top: 0;
+}
+.weui-cells{
+  margin-top: 20rpx;
+}
+.weui-navbar{
+  background-color: white;
+  border-bottom: none;
+}
+.weui-navbar__item.weui-bar__item_on{
+  color: #41B0FF;
+}
+.weui-navbar__slider{
+  background-color: #41B0FF;
+}
+.time{
+  font-size: 26rpx;
+  color: #999;
+}
+.mylist_back1{
+  margin-top:4%;
+  margin-left: 30%;
+}
+.aaa{
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+}
+.mylist_back{
+  display: flex;
+  flex-direction: column;
+   /* padding-top: 40%;  */
+  color: #999;
+  font-size: 28rpx;
+}
+.mylist_back2{
+  width: 324rpx;
+  height: 302rpx;
+}
+/*————————推荐板块  */
+.list_enroll{
+  background-color: white;
+}
+.tuijian{
+  background-color: white;
+  margin-top: 10rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+  border-top: 1rpx solid #E5E5E5;
+}
+.tuijian_title{
+  height: 90rpx;
+  font-size: 34rpx;
+  color: #333;
+  padding-left: 30rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.flex1{
+  width: 400rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tuijian_img{
+  width: 234rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+}
+.tuijian_banner{
+  width: 100%;
+  padding: 20rpx 0rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+  display: flex;
+}
+.tuijian_title1{
+  padding: 1rpx 30rpx;
+}
+.tuijian_title2{
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+.tuijian_title3{
+  margin-left: 20rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content:space-between;
+  float: left;
+  width: 100%;
+}
+.tuijian_title4{
+  font-size: 24rpx;
+  color: #999;
+}
+.tuijian_img1{
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 14rpx;
+}
+.tuijian_img4{
+  display: flex;
+  position: relative;
+}
+.tuijian_img3{
+  position: absolute; 
+  left: 70%;
+}
+.tuijian_img2{
+  margin-right: 40rpx;
+}
+.tuijian_jiage{
+  font-size: 30rpx;
+  color: #0396ff;
+}
+.rich_one{
+  width: 93%;
+  font-weight: normal;
+}

@@ -1,0 +1,586 @@
+/* zh_hdbm/pages/activity/activity.wxss */
+
+.header {
+  height: 300rpx;
+}
+
+.header_img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.swiper-container {
+  position: relative;
+}
+.locations{
+font-size:31rpx;
+max-width: 97%;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+color: #808080;
+}
+.swiper-container .swiper {
+  height: 300rpx;
+}
+
+.swiper-container .swiper .img {
+  width: 100%;
+  height: 100%;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  background: #000;
+  width: 120rpx;
+  margin: auto;
+  border-radius: 10rpx;
+  height: 20rpx;
+  justify-content: center;
+}
+
+.dot {
+  margin: 4rpx 8rpx;
+  width: 14rpx;
+  height: 14rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  transition: all 0.6s;
+}
+
+.active {
+  width: 34rpx;
+  background: #43b1ff;
+}
+
+.slide_icon_text {
+  font-size: 50rpx;
+}
+textarea{
+  height:100px;
+background:#fff;
+width:100%;
+margin:5rpx;
+font-size: 31rpx;
+}
+text{
+  font-size:31rpx;
+}
+.uploaded image{
+  width:165rpx;
+height:165rpx;
+margin:12rpx;
+}
+.addp{
+    width:165rpx;
+height:151rpx;
+
+float:left;
+text-align:center;
+line-height:165rpx;
+font-size:60rpx;
+background:#fff;
+margin:22rpx;
+border:1rpx solid #acacaa;
+
+}
+.addp .img{
+width:45%;
+height:40%;
+
+}
+.uploaded{
+display:inline-block;
+float:left;
+overflow: hidden;
+}
+.lists{
+    background:#fff;
+      display:flex;
+        height:92rpx;
+          line-height:92rpx;
+            margin-bottom: 10rpx;
+            font-size: 30rpx;
+}
+.lists{
+  background:#fff;
+  display:flex;
+  height:92rpx;
+  line-height:92rpx;
+  margin-bottom: 10rpx;
+}
+.a1{
+width:50rpx;
+height:51rpx;
+margin:20rpx 10rpx 0rpx 0rpx;
+
+}
+.a2{
+background:#fff;
+text-indent:18rpx;
+height:74rpx;
+border-top:1rpx solid #cacaca;
+}
+.a2 input{
+  height: 100%;
+  text-indent: 18rpx;
+}
+page {
+  background: #e5e5e5;
+}
+.xieyi{
+  width: 100%;
+  height:100%;
+  position: fixed;
+  top: 0;
+  z-index: 5000;
+}
+.xieyi>view:nth-child(1){
+  position: absolute;
+  top:0;
+  z-index: 5500;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  opacity: .5;
+}
+.xieyi>view:nth-child(2){
+  width: 70%;
+  height: 800rpx;
+  background: #fff;
+  z-index: 6000;
+  border-radius: 15rpx;
+  overflow-y:scroll;
+}
+.title {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: orange;
+  text-align: center;
+  font-size: 26rpx;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  color: #fff;
+}
+
+.rel {
+  position: relative;
+}
+
+.ab {
+  position: absolute;
+}
+
+.ud {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.lr {
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.udlr {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.ma {
+  margin: 0 auto;
+}
+
+.fon {
+  font-size: 26rpx;
+}
+
+.co {
+  color: #999;
+}
+
+.font {
+  font-size: 微软雅黑;
+}
+
+.bono {
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+/*上传图片  */
+
+.upload {
+  width: 100%;
+  height: 250rpx;
+  background: #fff;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+}
+
+.upload image {
+  width: 100%;
+}
+
+.upload_title {
+  width: 90%;
+  height: 70rpx;
+  font-size: 24rpx;
+  color: #333;
+  margin: 0 auto;
+  line-height: 70rpx;
+}
+
+.replace {
+  width: 150rpx;
+  height: 60rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 15rpx;
+  overflow: hidden;
+  color: #fff;
+}
+
+.replace view {
+  width: 100%;
+  height: 100%;
+}
+
+.replace view:nth-child(1) {
+  position: absolute;
+  top: 0;
+  background: #000;
+  opacity: 0.4;
+  border-radius: 10rpx;
+  z-index: 1;
+}
+
+.replace view:nth-child(2) {
+  position: absolute;
+  top: 0;
+  z-index: 99;
+}
+
+.upload_img {
+  width: 150rpx;
+  height: 150rpx;
+  border: 1rpx solid #ccc;
+  margin-left: 5%;
+  border-radius: 15rpx;
+}
+
+.upload_img>view {
+  width: 100rpx;
+  height: 3rpx;
+  background: #ccc;
+}
+
+.upload_img view:nth-child(1) {
+  transform: rotate(90deg);
+}
+
+/*活动主体  */
+
+.activity {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.activity_theme {
+  width: 95%;
+  height: 80rpx;
+}
+
+.activity_theme>view {
+  width: 100%;
+  height: 50rpx;
+}
+
+/*icon  */
+
+.activity_img {
+  width: 50rpx;
+  height: 100%;
+  float: left;
+  /* overflow: hidden; */
+  border-radius: 50%;
+  position: relative;
+}
+.activity_img1 {
+  width: 50rpx;
+  height: 100%;
+  float: right;
+  /* overflow: hidden; */
+  border-radius: 50%;
+  position: relative;
+}
+.activity_img1 image {
+  width: 30%;
+  height: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.activity_img image {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+/*活动名字  */
+
+.activity_text {
+  width: 140rpx;
+  height: 100%;
+  float: left;
+  color: #666;
+  line-height: 50rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*活动提示  */
+
+.choice {
+  width: 200rpx;
+  height: 100%;
+  line-height: 50rpx;
+  float: left;
+  /* color: #999; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity_prompt {
+  width: 400rpx;
+  height: 100%;
+  line-height: 50rpx;
+  float: left;
+  /* color: #999; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity_prompt input {
+  font-family: '微软雅黑';
+}
+
+.activity_pro {
+  width: 100rpx;
+  height: 100%;
+  float: right;
+}
+
+.switch {
+  width: 100rpx;
+  height: 60rpx;
+  right: 0;
+}
+
+.activity_sign {
+  width: 300rpx;
+  float: left;
+  text-indent: 18rpx;
+}
+
+.time {
+  width: 90%;
+  height: 80rpx;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.time>picker {
+  width: 50%;
+  height: 60rpx;
+  font-size: 26rpx;
+  line-height: 60rpx;
+}
+
+.time>picker:nth-child(1) {
+  left: 0;
+}
+
+.time>picker:nth-child(2) {
+  right: 0;
+}
+
+.time>picker view {
+  width: 100%;
+  height: 60rpx;
+}
+
+.time input {
+  width: 100%;
+  height: 100%;
+  /* background: red; */
+  line-height: 80rpx;
+}
+
+.activity_delete {
+  width: 100rpx;
+  height: 100%;
+  font-size: 26rpx;
+  color: red;
+  line-height: 60rpx;
+  float: right;
+}
+
+/*活动类型  */
+
+.activity_type {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 5%;
+}
+
+.activity_type text {
+  color: #41B0FF;
+}
+
+.activity_custom {
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  line-height: 80rpx;
+  color: #41B0FF;
+  text-indent: 5%;
+}
+
+.button {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #43B1FF;
+  color: #fff;
+  margin-bottom: 30rpx;
+}
+
+/*添加自定义填写项  */
+
+.add {
+  width: 100%;
+  height: auto;
+  padding-bottom: 30rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+}
+
+.header {
+  width: 100%;
+  height: 70rpx;
+  font-size: 26rpx;
+  color: #fff;
+  background: orange;
+  line-height: 70rpx;
+}
+
+.header>view {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.header>view button:nth-child(1) {
+  float: left;
+  width: 50%;
+  text-align: left;
+  background: none;
+  height: 100%;
+}
+.header button{
+
+  line-height: 70rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+.header button::after{
+  border: none;
+}
+.activity_prompt button{
+  line-height: 50rpx;
+  width: 100%;
+  font-size: 26rpx;
+  text-align: left;
+  background: none;
+  padding: 0;
+  color: #999;
+}
+.activity_prompt button::after{
+  border: none;
+}
+.header>view button:nth-child(2) {
+  float: right;
+   width: 50%;
+  text-align: right;
+  background: none;
+  height: 100%;
+}
+.add_title {
+  width: 90%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 26rpx;
+  color: #333;
+  margin: 0 auto;
+}
+
+.add_inpu {
+  width: 90%;
+  height: 70rpx;
+  border: 1rpx solid #e5e5e5;
+  color: #333;
+  margin: 0 auto;
+  font-size: 26rpx;
+  border-radius: 15rpx;
+}
+
+.add_inpu input {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.add_prompt {
+  width: 90%;
+  height: 70rpx;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  color: #333;
+  margin: 20rpx auto;
+}
+

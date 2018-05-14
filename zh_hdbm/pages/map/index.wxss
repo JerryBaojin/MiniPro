@@ -1,0 +1,51 @@
+.tagActive{
+  color:#ee4046;
+  background:#fff;
+}
+.section{
+display:flex;
+background:#ee4046;
+color:white;
+border: 1px solid #ee4046;
+}
+.section view{
+  flex:1;
+  text-align:center;
+}
+.flex{
+  display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+.content_dizhiimg1 image {
+width:30rpx;
+height:20rpx;
+
+}
+/* .section{
+  padding-bottom: 10px;
+} */
+.c{
+  display: flex;
+}
+.x{
+  display: inline-block;
+
+}
+.content_dizhi1 {
+  background-color: white;
+  width: 100%;
+
+  height: 80rpx;
+  border-radius: 6rpx;
+
+  display: flex;
+  align-items: center;
+}
+
+.content_dizhi1 image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+}

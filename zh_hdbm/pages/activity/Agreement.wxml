@@ -1,0 +1,4 @@
+<!--zh_hdbm/pages/activity/Agreement.wxml-->
+<view class='container'>
+    <rich-text nodes="{{nodes}}"></rich-text>
+</view>

@@ -1,0 +1,15 @@
+<!--zh_hdbm/pages/refer/intro/intro.wxml-->
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class="font">
+    <view class="intro">
+      <textarea class="text" value='{{tel}}' name="name" placeholder="请输入主办方简介，最多可输入70字" maxlength="70" placeholder-style="color:#ccc;" />
+      <!-- <view class="tishi">还可以输入
+        <text class="num">70</text>字</view> -->
+    </view>
+    <view class="comp_flex">
+      <button form-type="submit" class="comp">
+        确定
+      </button>
+    </view>
+  </view>
+</form>

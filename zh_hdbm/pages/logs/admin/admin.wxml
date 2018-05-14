@@ -1,0 +1,63 @@
+<!--zh_hdbm/pages/admin/admin.wxml-->
+<canvas style='width:100%;height:800rpx;' canvas-id="myCanvas">
+<view class="font">
+  <view class="admin">
+    <view class="list_one">
+      <view class="top">{{hdinfo.ll_num}}</view>
+      <view class="bottom">浏览</view>
+    </view>
+    <view class="list_one">
+      <view class="top">{{hdinfo.fx_num}}</view>
+      <view class="bottom">分享</view>
+    </view>
+    <view class="list_one">
+      <view class="top">{{hdinfo.enroll_num}}</view>
+      <view class="bottom">报名</view>
+    </view>
+    <view class="list_one">
+      <view class="top">0</view>
+      <view class="bottom">评论</view>
+    </view>
+    <view class="list_one" style="border:none;">
+      <view class="top">{{hdinfo.sc_num}}</view>
+      <view class="bottom">收藏</view>
+    </view>
+  </view>
+
+  <view class="edit">
+    <view class="edit_one">
+      <image class="edit_img" src="../../images/bianji.png"></image>
+      <view>活动编辑</view>
+    </view>
+    <view class="edit_one" bindtap="bmg">
+      <image class="edit_img" src="../../images/guanli.png"></image>
+      <view>报名管理</view>
+    </view>
+    <view class="edit_one">
+      <image class="edit_img" src="../../images/shejiao.png"></image>
+      <view>社交分享</view>
+      <button open-type='share'></button>
+    </view>
+    <view class="edit_one" bindtap="guanbi">
+      <image class="edit_img" src="../../images/guanji.png"></image>
+      <view wx:if="{{hdtype==1}}">关闭报名</view>
+      <view wx:if="{{hdtype==2}}">开启报名</view>
+    </view>
+    <view class="edit_one" bindtap="chakan">
+      <image class="edit_img" src="../../images/xiangqing.png"></image>
+      <view>查看详情</view>
+    </view>
+    <view class="edit_one" bindtap="again">
+      <image class="edit_img" src="../../images/more.png"></image>
+      <view>再发一个</view>
+    </view>
+  </view>
+  <view class="hexiao">
+    <view class="hexiao_left" bindtap="yan">验票</view>
+    <view class="hexiao_right" bindtap='code'>添加核销员</view>
+  </view>
+  <modal title="你确定关闭报名吗？" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" bindconfirm="modalChange" bindcancel="modalcancel">
+    这是对话的内容 
+  </modal>
+</view>
+</canvas>

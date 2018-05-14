@@ -1,0 +1,41 @@
+<!--zh_hdbm/pages/acinfo/acinfo.wxml-->
+<view class="font action">
+  <view class="acinfo_header">
+    <view>支付费用<text class="acinfo_header_one">{{cost}}</text></view>
+    <!-- <view>实付金额<text class="acinfo_header_one">¥{{ren.sy_cost}}</text></view> -->
+    <view wx:if="{{ren.status==1}}">报名状态<text class="acinfo_header_one">待验票</text></view>
+    <view wx:if="{{ren.status==2}}">报名状态<text class="acinfo_header_one">已核销</text></view>
+  </view>
+
+  <view class="acinfo_section">
+    <view class="acinfo_top">
+      <view>
+          <text>姓名</text>
+           <text class="action_name">{{ren.xm}}</text>
+      </view>
+      <view class="tel">
+           <text>手机</text>
+           <text class="action_name">{{ren.phone}}</text>
+      </view>
+    </view>
+    <view class="acinfo_bottom">
+      <!-- <view class="acinfo_bottom_one" bindtap="phone">
+        <image class="acinfo_bottom_img" src="../images/dianhua.png"></image>
+        <view>打电话</view>
+      </view> -->
+      <!-- <view class="acinfo_bottom_one">
+        <image class="acinfo_bottom_img" src="../images/mail.png"></image>
+        <view>发短信</view>
+      </view>
+      <view class="acinfo_bottom_one" style="border:none;">
+        <image class="acinfo_bottom_img" src="../images/duihua.png"></image>
+        <view>发消息</view>
+      </view> -->
+    </view>
+  </view>
+
+  <view class="acinfo_three">
+    <!-- <view>订单编号<text class="acinfo_header_one">110519496243325</text></view> -->
+    <view>报名时间<text class="acinfo_header_one">{{ren.cerated_time}}</text></view>
+  </view>
+</view>

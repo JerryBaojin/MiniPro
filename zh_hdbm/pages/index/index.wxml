@@ -1,0 +1,99 @@
+<view class="index font">
+  <view class="index_content">
+    <view class="flex">
+
+      <view class="content_dizhiimg1 flex">
+        <view>{{city}}</view>
+        <view class="content_dizhiimg3">
+          <image src="../images/xiala.png"></image>
+        </view>
+
+      </view>
+        <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+       <!-- <view class="content_dizhiimg2 flex" bindtap="saoma">
+        <view>
+          <image src="../images/shaoma@2x.png"></image>
+        </view>
+         <view class="content_dizhiimg3 content_dizhiimg4" bindtap='yan'>扫码</view>
+      </view>  -->
+
+    </view>
+
+    <view class="content_dizhi1">
+      <image src="../images/sousuo@2x.png"></image>
+      <input bindblur="bindblur" type="text" class="content_inp" bindinput="sousuo" value="{{serachBox}}" placeholder="搜索" />
+    </view>
+    <view class="classname">
+      <view class="classname" hidden="{{hidden}}" wx:key="{{item.value}}" bindtap="infoYemian1" wx:for="{{sousuo}}" data-id="{{index}}" wx:for-index="index" wx:key="id">{{name}}</view>
+    </view>
+  </view>
+  <!--轮播图  -->
+  <view class="header rel">
+    <view class="header_img ab">
+      <view class="swiper-container">
+        <swiper autoplay="true" interval="5000" indicator-color="#fff" indicator-active-color="#43B1FF" indicator-dots="true" duration="500" circular="true" current="{{swiperCurrent}}"  class="swiper">
+          <block wx:for="{{slider}}" wx:key="unique">
+            <swiper-item>
+              <image mode="aspectFill" src="{{url}}{{item.logo}}" class="img"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+
+  <view class="address">
+
+  </view>
+  <view class="total">
+    <view class="toatal_head"></view>
+  </view>
+  <view class="details"></view>
+
+  <!-- ——————————————首页分类———————————————— -->
+  <swiper class="swiper-box" style='120rpx' circular="true" duration="300" bindchange="bindChange">
+    <swiper-item class="handover" wx:for="{{navs}}" wx:key="{{item.value}}">
+      <view class="classification al">
+        <block wx:for="{{item}}" wx:key="{{item.value}}">
+          <view class="child_element" data-flid="{{index}}" data-id="{{item.id}}" data-name="{{item.type_name}}" bindtap="tzfl">
+            <view class="slide_icon">
+              <image class="img" src="{{url}}{{item.icon}}"></image>
+            </view>
+            <view class="slide_icon_text">{{item.type_name}}</view>
+          </view>
+        </block>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!--——————————————推荐板块开始——————————  -->
+
+<view style="display:flex;" class='tuijian'>
+   <view   bindtap="loopTag"  class="{{tagActiveNumber==0?'tagActive':''}}" bindtap='chooseItems' data-current="0">全部发布</view>
+   <view   bindtap="loopTag"  class="{{tagActiveNumber==1?'tagActive':''}}" bindtap='chooseItems' data-current="1">附近发布</view>
+</view>
+
+<view>
+  <import src="list.wxml" />
+  <template is="itemsLists" data="{{list}}"/>
+</view>
+
+
+
+
+  <!--__________________推荐板块结束  -->
+
+  <!--__________________尾部  -->
+  <view class="footer">
+    <view class="footer1">
+      <!-- <image src="../images/zhihui@2x.png" class="footer_img"></image>  -->
+      <text class="footer_text1">{{copyright.copyright}}</text>
+    </view>
+  </view>
+</view>
+<!-- <view style='width:100%;height:100%;position:fixed;top:0;' wx:if="{{loading==false}}">
+    <view style='width:100%;height:100%;position:absolute;top:0;background:#000;z-index:500,opacity:.4'></view>
+    <view style='width:100%;height:100%;position:absolute;top:0;z-index:1000'>
+        <image mode='widthFix' style='width:400rpx;height:400rpx;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto' src='../images/loading.gif'></image>
+    </view>
+</view> -->

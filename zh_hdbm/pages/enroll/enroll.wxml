@@ -1,0 +1,28 @@
+<view class="font yuding">
+  <view class="yuding_banner">
+    <icon type="success"color="#43B1FF" size="70"/>
+    <text class="yuding_banner1">报名成功!</text>
+  </view>
+   <view class='info'>
+      <view class='logo'>
+          <image mode='widthFix' src='{{url}}{{seller.logo}}'></image>
+      </view>
+      <view class='ac_info'>
+          <view>{{seller.name}}</view>
+          <!-- <view>
+              <text>活动类型:线上活动</text>
+              <text>活动分类:交友</text>
+          </view> -->
+          <view>活动时间:{{seller.start_time}}日至{{seller.end_time}}日</view>
+          <view>活动地址:{{seller.address}}</view>
+      </view>
+  </view>
+  <!-- <view class='bath'>
+      <image mode='widthFix' src='data:image/png;base64,{{bath}}'></image>
+  </view>  -->
+  <!-- <view bindtap="baa" class="yuding_fanhui co">查看电子票</view> -->
+  <view bindtap="home" class="yuding_fanhui">返回首页</view>
+  <view class="yuding_footer">
+    <view class="yuding_footer1">{{seller.copyright}}</view>
+  </view>
+</view>

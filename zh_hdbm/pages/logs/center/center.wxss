@@ -1,0 +1,166 @@
+/* zh_hdbm/pages/center/center.wxss */
+.part_header{
+  padding: 50rpx 30rpx 30rpx;
+  background-color: #41B0FF;
+  color: white;
+  font-size: 24rpx;
+}
+.center_select{
+  display: flex;
+  position: relative;
+  background-color: white;
+  border-bottom: 1rpx solid #E5E5E5;
+  color: #333;
+  height: 80rpx;
+}
+.centeron{
+  color: #41B0FF;
+}
+.weui-navbar__slider{
+  position: absolute;
+  background-color: #0396ff;
+  width:50%;
+}
+.weui-navbar__item{
+  padding: 13rpx 0rpx;
+}
+.part_header_img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.part_header_name{
+  font-size: 36rpx;
+}
+.part_header_tou{
+  width: 130rpx;
+  height: 130rpx;
+  background-color: pink;
+  border-radius: 50%;
+  margin-bottom: 10rpx;
+}
+.part_header_bot{
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+}
+.part_header_left{
+  width: 50%;
+  text-align: right;
+  padding-right: 15rpx;
+}
+.part_header_right{
+  width: 50%;
+  text-align: left;
+  padding-left: 15rpx;
+}
+.part_header_margin{
+  margin-right: 30rpx;
+}
+.part_header_text{
+  font-size: 34rpx;
+  margin-right: 10rpx;
+}
+.part_header_jie{
+  font-size: 24rpx;
+  text-align: center;
+  height: 29rpx;
+  margin-top: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 25rpx;
+}
+.section{
+  margin-top: 10rpx;
+}
+.section_title{
+  font-size: 28rpx;
+  border-left: 5rpx solid #41B0FF;
+  padding-left: 30rpx;
+}
+.section_kong{
+  font-size: 32rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 50rpx;
+}
+/*————————推荐板块  */
+.tuijian{
+  background-color: white;
+  margin-top: 10rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+  border-top: 1rpx solid #E5E5E5;
+}
+.tuijian_title{
+  height: 90rpx;
+  font-size: 34rpx;
+  color: #333;
+  padding-left: 30rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.flex1{
+  width: 400rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tuijian_img{
+  width: 234rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+}
+.tuijian_banner{
+  width: 100%;
+  padding: 20rpx 0rpx;
+  display: flex;
+}
+.tuijian_title2{
+  font-size: 30rpx;
+  color: #333;
+}
+.tuijian_title3{
+  margin-left: 20rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content:space-between;
+  float: left;
+  width: 100%;
+}
+.tuijian_title4{
+  font-size: 24rpx;
+  color: #999;
+}
+.tuijian_img1{
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 14rpx;
+}
+.tuijian_img4{
+  display: flex;
+  position: relative;
+}
+.tuijian_img3{
+  position: absolute; 
+  left: 70%;
+}
+.tuijian_img2{
+  margin-right: 40rpx;
+}
+.tuijian_jiage{
+  font-size: 30rpx;
+  color: #0396ff;
+}
+.list_enroll{
+  padding: 0rpx 30rpx;
+  background-color: white;
+  margin-top: 20rpx;
+}
+
+
+
+

@@ -1,0 +1,35 @@
+
+    <view class="tuijian_title1" wx:for="{{list}}" wx:key="{{item.value}}">
+      <view bindtap="infoYemian" class="tuijian_banner" data-id="{{index}}" wx:for-index="index" wx:key="id">
+        <view class="tempTop">
+            <image  src="{{item.headImg}}"></image>
+            <text>{{item.nickname}}</text>
+            <text>{{item.types}}</text>
+               <view class='ac'>
+           <text>{{item.status==0?"未审核":"已审核"}}</text>
+           <button bindtap='del' data-id='{{item.id}}' data-index='{{index}}'>删除</button>
+        </view>
+        </view>
+        
+        <!--内容  -->
+        <view class="tempContent">
+      {{item.contents}}
+        </view>
+     
+       <view class="timages">
+      <view wx:for="{{item.imgs}}" wx:key="index">
+        <image class="itemPic" src="{{item}}"></image>
+      </view>
+        </view>
+
+          <!--location  -->
+          <view class="tempLocation" bindtap='toMap' data-pid='{{index}}'  style='color:blue;'>
+            <image src='../../../resource/img/loc.png'></image>
+            <text>{{item.location.address}}</text>
+          </view>
+          <!--  -->
+          <view style="font-size:29rpx;color:#cacaca;">
+          发布于  {{item.time}}
+          </view>
+      </view>
+    </view>

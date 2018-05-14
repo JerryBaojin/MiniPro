@@ -1,0 +1,85 @@
+{
+  "pages": [
+ 
+    "zh_hdbm/pages/index/index",
+      "zh_hdbm/pages/map/index",
+    "zh_hdbm/pages/person/info",
+  "zh_hdbm/pages/logs/personal/list",
+    "zh_hdbm/pages/logs/admin/scancode",
+    "zh_hdbm/pages/enroll/enroll",
+    "zh_hdbm/pages/logs/income/income",
+    "zh_hdbm/pages/logs/refer/refer",
+    "zh_hdbm/pages/logs/intro/intro",
+    "zh_hdbm/pages/enroll/code",
+    "zh_hdbm/pages/logs/authen/authen",
+    "zh_hdbm/pages/logs/geren/geren",
+    "zh_hdbm/pages/logs/prise/prise",
+    "zh_hdbm/pages/logs/admin/write",
+    "zh_hdbm/pages/logs/select/select",
+    "zh_hdbm/pages/cang/cang",
+    "zh_hdbm/pages/success/success",
+    "zh_hdbm/pages/info/info",
+    "zh_hdbm/pages/logs/cash/cash",
+"zh_hdbm/pages/activity/input",
+    "zh_hdbm/pages/logs/admin/admin",
+    "zh_hdbm/pages/logs/edit/edit",
+    "zh_hdbm/pages/logs/acinfo/acinfo",
+    "zh_hdbm/pages/logs/center/center",
+"zh_hdbm/pages/activity/activity",
+    "zh_hdbm/pages/activity/introduce",
+    "zh_hdbm/pages/lijibm/lijibm",
+    "zh_hdbm/pages/logs/mylist/mylist",
+    "zh_hdbm/pages/logs/mylist/listinfo",
+    "zh_hdbm/pages/guanyu/guanyu",
+   "zh_hdbm/pages/logs/personal/info",
+      "zh_hdbm/pages/logs/personal/personal",
+    "zh_hdbm/pages/list/list",
+    "we7/pages/index/index",
+    "we7/pages/user/index/index",
+    "zh_hdbm/pages/activity/Agreement",
+    "zh_hdbm/pages/index/classification",
+    "zh_hdbm/pages/logs/Administration/Administration",
+    "zh_hdbm/pages/logs/income/detailed",
+    "zh_hdbm/pages/logs/admin/code"
+  ],
+  "window": {
+    "backgroundColor": "#ee404a",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ee404a",
+    "navigationBarTitleText": "报名列表",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#ee404a",
+    "backgroundColor": "#fff",
+    "color": "#333",
+    "list": [
+      {
+        "pagePath": "zh_hdbm/pages/index/index",
+        "text": "首页",
+        "iconPath": "zh_hdbm/pages/images/shouye@2x.png",
+        "selectedIconPath": "zh_hdbm/pages/images/shouye-fill@2x.png"
+      },
+      {
+        "pagePath": "zh_hdbm/pages/map/index",
+        "text": "地图",
+        "iconPath": "zh_hdbm/pages/images/fujian.png",
+        "selectedIconPath": "zh_hdbm/pages/images/fs.png"
+      },
+      {
+        "pagePath": "zh_hdbm/pages/activity/activity",
+        "text": "发布",
+        "iconPath": "zh_hdbm/pages/images/jia1.png",
+        "selectedIconPath": "zh_hdbm/pages/images/jia.png"
+      },
+
+      {
+        "pagePath": "zh_hdbm/pages/logs/personal/personal",
+        "text": "我的",
+        "iconPath": "zh_hdbm/pages/images/wode@2x.png",
+        "selectedIconPath": "zh_hdbm/pages/images/wode-fill@2x.png"
+      }
+    ]
+  }
+}

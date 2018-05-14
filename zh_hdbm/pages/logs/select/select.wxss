@@ -1,0 +1,53 @@
+/* zh_hdbm/pages/logs/select/select.wxss */
+.select{
+  background-color: white;
+  padding-left: 30rpx;
+}
+.select_one{
+  padding-top: 30rpx;
+  display: flex;
+}
+.select_one_left{
+  width: 615rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #999;
+  padding-right: 25rpx;
+  padding-bottom: 30rpx;
+  margin-left: 30rpx;
+}
+.select_one_left2{
+  width: 615rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 25rpx;
+  padding-bottom: 30rpx;
+  margin-left: 30rpx;
+}
+.select_one_img{
+  width: 50rpx;
+  height: 50rpx;
+}
+.select_one_title{
+  color: #333;
+  font-size: 30rpx;
+}
+.select_one_content{
+  font-size: 22rpx;
+  color: #65717F;
+  margin-top: 10rpx;
+}
+.right_arr{
+  width: 20rpx;
+  height: 30rpx;
+}
+.select_middle{
+  width: 500rpx;
+}
+
+
+
+
+

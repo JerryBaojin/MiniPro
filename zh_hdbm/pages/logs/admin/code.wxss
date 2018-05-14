@@ -1,0 +1,68 @@
+/* zh_zbkq/pages/my/tjhxy/tjhxy.wxss */
+page{
+  background: #efeff4;
+  font-family: '微软雅黑', Helvetica, sans-serif;
+}
+.head{
+  background: #43B1FF;
+  height: 450rpx;
+  position: relative;
+}
+.head-img{
+  box-sizing: border-box;
+  position: absolute;
+  top:70rpx;
+  left:50%;
+  margin-left: -120rpx;
+  width: 240rpx;
+  height: 240rpx;
+}
+.head-img image{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.head-name{
+  position: absolute;
+  top:360rpx;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 30rpx;
+}
+/*核销员*/
+.hxy{
+  background: #fff;
+  font-size: 30rpx;
+  padding: 20rpx 30rpx;
+}
+.hxylist{
+  border-top: 1px solid #d9d9d9;
+  background: #fff;
+  padding: 10rpx 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.hxylist image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.hxy-bd{
+  margin-left: 25rpx;
+  flex: 1;
+  font-size: 30rpx;
+  color: #666;
+}
+.sc{
+  font-size: 30rpx;
+  color: #fff;
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background: #43B1FF;
+  border-radius: 30rpx;
+}

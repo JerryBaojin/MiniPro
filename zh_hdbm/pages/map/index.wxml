@@ -1,0 +1,21 @@
+<view>
+<view class="section" >
+      <view   bindtap="loopTag"  class="{{tagActiveNumber==0?'tagActive':''}}" bindtap='chooseItems' data-current="0">寻宠物</view>
+      <view   bindtap="loopTag"  class="{{tagActiveNumber==1?'tagActive':''}}" bindtap='chooseItems' data-current="1">寻主人</view>
+</view>
+ <view class="page-section page-section-gap">
+    <map
+      id="myMap"
+      style="width: 100%; height: 100vh;"
+      latitude="{{distance.latitude}}"
+      bindcontroltap="ctap"
+       bindmarkertap="tap"
+         controls="{{controls}}"
+      longitude="{{distance.longitude}}"
+      markers="{{markers}}"
+      covers="{{covers}}"
+      show-location
+    ></map>
+  </view>
+
+</view>

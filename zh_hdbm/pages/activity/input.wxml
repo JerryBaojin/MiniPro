@@ -1,0 +1,24 @@
+<view style='padding:20rpx;background:#fff;'>
+<form  bindsubmit="formSubmit" bindreset="formReset">
+  <textarea placeholder="请详细说明你的情况" name="contents" focus="{{focus}}" />
+  <!--上传  -->
+  <view style="overflow:hidden;border-top:1rpx solid #cacaca;">
+    <view  bindtap="delete"class="uploaded" wx:for="{{uploadedImgs}}" data-pid="{{index}}" wx:key="{{index}}">
+      <image src="{{item}}"></image>
+    </view>
+    <view class="addp" bindtap="uploadPic"><image class='img' src='../../resource/img/camera.png'></image></view>
+  </view>
+  <!--tips  -->
+  <text style='color:#808080;'>点击已上传的图片可进行删除</text>
+  <view class="lists" bindtap='toMap'>
+   <image class="a1" src="../../resource/img/loc.png"></image>
+<view class="locations">{{loc}}</view>
+</view>
+
+<view class='a2'>
+     <input name="phone" maxlength="11" type='number' placeholder-style='font-size:31rpx;color:#808080;' placeholder='请输入联系方式'></input>
+</view>
+    <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+<button style='position: fixed;bottom: 0;width: 95%;background:#ee4046; color:#fff;font-size:31rpx;' formType="submit">发布信息</button>
+</form>
+</view>

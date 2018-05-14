@@ -1,0 +1,14 @@
+<!--zh_hdbm/pages/logs/income/detailed.wxml-->
+<view class='container'>
+  <view class='detailed' wx:for="{{detailed}}">
+    <view>{{item.cerated_time}}</view>
+    <view wx:if="{{item.type==1}}">转入{{item.cost}}元</view>
+    <view wx:if="{{item.type==2}}">提现{{item.cost}}元</view>
+  </view>
+</view>
+<view class='container' wx:if="{{types==3}}">
+  <view class='detailed' wx:for="{{detailed3}}">
+    <view>{{item.cerated_time}}</view>
+    <view>提现{{item.tx_cost}}元</view>
+  </view>
+</view>

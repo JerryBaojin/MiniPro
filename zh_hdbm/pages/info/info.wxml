@@ -1,0 +1,42 @@
+<view  style='padding-left:30rpx;padding-right:30rpx;'>
+     <view class="tempTop">
+            <image class="image" src="{{infos.headImg}}"></image>
+            <text class="text1" >{{infos.nickname}}</text>
+            <text style='color:#ee4046;'>{{infos.types}}</text>
+                  <text >{{infos.time}}</text>
+              
+            <view bindtap='phonecall' style='margin-top:35rpx;' >
+                <image class="image2" src="../../resource/img/phone.png"></image>
+                <text class="text2">{{infos.phone}}</text>
+            </view> 
+
+            <text style='display:none;'>与TA距离{{distance}}m</text>
+               
+
+        </view>
+         <view class="tempLocation" bindtap='toMap'>
+            <image src='../../resource/img/loc.png'></image>
+            <text >{{infos.address}}</text>
+          </view>
+
+          <view class="content">
+          <text style='color:#bfbfbf;text-indent:2em;'>{{infos.contents}}</text>
+          </view>
+          <view style='width:100%;margin-bottom:20rpx;' wx:for="{{infos.imgs}}" wx:key="index">
+                   <image style='width:100%;'  src="{{item}}"></image>
+          </view>
+
+      
+<!-- </view>
+     <view class="bottom">
+            <view bindtap='share'>
+              
+              <button open-type="share"><image src="../../resource/img/share.png"></image>分享</button>
+  
+            </view>
+              <view bindtap='fanhui' style='background:green;color:white'>
+                <image src="../../resource/img/return.png"></image>
+                <text>返回</text>
+            </view>-->
+              
+          </view>  

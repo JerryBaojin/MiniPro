@@ -1,0 +1,67 @@
+<!--zh_hdbm/pages/code/code.wxml-->
+<view class="font">
+  <view class="code">
+    <view class="code_box">
+      <view class="code_reg">活动费用
+        <text wx:if="{{money==0}}">免费</text>
+        <text wx:if="{{money!=0}}">¥{{money}}</text>
+        <text style='float:right;font-size:24rpx;color:orange' wx:if="{{status==1}}">待参与</text>
+        <text style='float:right;font-size:24rpx;color:orange' wx:if="{{status==2}}">已完成</text>
+      </view>
+      <!-- <view class="code_user" wx:if="{{types==2}}">{{xingming}}（{{dianhua}}）</view> -->
+      <view class="code_user" wx:if="{{types==1}}">{{infos.bm_name}}（{{infos.tel}}）</view>
+      <view class="code_user" wx:if="{{types==2}}">{{infos[0].value}}（{{infos[1].value}}）</view>
+      <view class="code_content">
+        <view class="code_num">{{nuber}}</view>
+        <view class="code_img">
+          <image mode='widthFix' src='data:image/png;base64,{{bath}}'></image>
+        </view>
+        <!-- <view class="code_join">待参与</view> -->
+      </view>
+      <view class="code_info">
+        <view class="code_title">
+          <view>{{slider.name}}</view>
+          <image src="../images/you.png"></image>
+        </view>
+        <view class="code_time">
+          <view>活动时间：</view>
+          <view>{{slider.start_time}}</view>
+        </view>
+        <view class="code_add">
+          <view class="code_address" bindtap='tomap'>
+            <view>活动地址：</view>
+            <view>{{slider.address}}</view>
+          </view>
+          <image src="../images/you.png"></image>
+        </view>
+        <view class="code_contact">
+          <view class="code_impor">
+            <view>主办方：</view>
+            <view>{{xinxi.name}}</view>
+          </view>
+          <view class="code_contactri" catchtap="call_phone">
+            <view>联系Ta</view>
+            <image src="../images/you.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="code_footer">
+      <view class="footer_left" bindtap='fabu'>
+        <image class="footer_image" src="../images/add.png"></image>
+        <view>我要发活动</view>
+      </view>
+      <view class="footer_left">
+        <image class="footer_image2" src="../images/active.png"></image>
+        <view>保存电子票</view>
+      </view>
+      <view class="footer_left" bindtap='fanhui'>
+        <image class="footer_image" src="../images/comp.png"></image>
+        <view>
+          <button>返回首页</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

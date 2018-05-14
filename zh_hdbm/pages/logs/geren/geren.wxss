@@ -1,0 +1,98 @@
+/* zh_hdbm/pages/logs/geren/geren.wxss */
+.geren_header{
+  font-size: 26rpx;
+  background-color: white;
+  margin-top: 20rpx;
+}
+.rel{
+  position: relative;
+}
+.ab{
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.geren_header_one{
+  border-bottom: 1rpx solid #DCDCDC;
+  color: #333;
+  display: flex;
+  align-items: center;
+  height: 70rpx;
+  padding: 0rpx 30rpx;
+}
+.header_left{
+  color: #999;
+  margin-right: 30rpx;
+}
+.header_right{color: #333;}
+.banner{
+  background-color: white;
+  padding: 30rpx 30rpx 50rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.banner_left{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.banner_right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.benner_title{
+  color: #65717F;
+  font-size: 24rpx;
+}
+.banner_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #959EA5;
+  font-size: 22rpx;
+  margin-top: 20rpx;
+  width: 280rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  background-color: #E9F6FF;
+  border: 1rpx solid #E5EDFE;
+}
+.camera{
+  width: 100rpx;
+  height: 80rpx;
+  margin-bottom: 15rpx;
+}
+.camera2{
+  width:280rpx;
+  height: 200rpx;
+}
+.agree{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  padding: 30rpx;
+}
+.agree_text{
+  color: #333;
+}
+.agree_text2{color: #41B0FF;}
+.footer{
+  padding: 10rpx 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer_btn{
+  color: #999;
+  background-color: #CCCCCC;
+  width: 100%;
+  border: none;
+  font-size: 26rpx;
+}

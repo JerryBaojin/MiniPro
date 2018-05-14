@@ -1,0 +1,166 @@
+.header{
+  background-color: white;
+  padding: 20rpx 30rpx;
+}
+.list{
+  font-size: 26rpx;
+  color: #333;
+}
+.header_title{
+  font-size: 30rpx;
+  color: #41B0FF;
+  margin-bottom: 10rpx;
+}
+.header_content{color: #999;}
+.section{
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background-color: white;
+}
+.section_name{color: #999;}
+/*————————推荐板块  */
+.list_enroll{
+  background-color: #F8F8F8;
+  border-radius: 15rpx;
+}
+.tuijian{
+  background-color: white;
+  margin-top: 10rpx;
+}
+.tuijian_title{
+  height: 90rpx;
+  font-size: 34rpx;
+  color: #333;
+  padding-left: 30rpx;
+  line-height: 90rpx;
+}
+.flex1{
+  width: 400rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tuijian_img{
+  width: 234rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+}
+.tuijian_banner{
+  width: 100%;
+  padding: 20rpx 0rpx;
+  display: flex;
+}
+.tuijian_title2{
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+.tuijian_title3{
+  margin-left: 20rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content:space-between;
+  float: left;
+  width: 100%;
+}
+.tuijian_title4{
+  font-size: 24rpx;
+  color: #999;
+}
+.tuijian_img1{
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 14rpx;
+}
+.tuijian_img4{
+  display: flex;
+  position: relative;
+}
+.tuijian_img3{
+  position: absolute; 
+  left: 70%;
+}
+.tuijian_img2{
+  margin-right: 40rpx;
+}
+.tuijian_jiage{
+  font-size: 30rpx;
+  color: #0396ff;
+}
+
+/*+———————————电子票部分样式开始—————————————  */
+.ticket{margin-top: 20rpx;}
+.ticket_box{border: 1rpx solid #eeeeee;display: flex;height: 200rpx;border-radius: 6rpx;}
+.ticket_left{border-left: 5rpx solid #41B0FF;padding: 20rpx 30rpx 30rpx 50rpx;width: 90%;border-right: 1rpx solid #eeeeee;}
+.ticket_money{margin-left: 0rpx;font-size: 30rpx;}
+.ticket_left view:nth-child(1){margin-bottom: 5rpx;display: flex;justify-content: space-between;}
+.ticket_right{width: 10%;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.ticket_right view:nth-child(1){word-wrap: break-word;width: 30rpx;line-height: 30rpx;font-size: 24rpx;color: #999;}
+.ticket_right image{width: 20rpx;height: 20rpx;margin-top: 10rpx;}
+.ticket_statu{color: #999;}
+.info_money{
+  padding: 20rpx 30rpx;
+  background-color: white;
+  margin-top:10rpx;
+}
+.ticket_btn{
+  height: 58rpx;
+  display: flex;
+  margin-top: 10rpx;
+  align-items: center;
+}
+.quxiao{
+  width: 114rpx;
+  height: 50rpx;
+  background-color: white;
+  border: 1rpx solid #999;
+  font-size: 22rpx;
+  margin-left: 50%;
+  border-radius: 10rpx;
+  color: #999;
+  text-align: center;
+  line-height: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 24rpx;
+}
+.wancheng{
+  width: 130rpx;
+  height: 50rpx;
+  border: 1rpx solid #41B0FF;
+  background-color: #41B0FF;
+  font-size: 22rpx;
+  color: white;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info_user{
+  display: flex;
+  align-items: center;
+}
+.info_user image{
+  width: 15rpx;
+  height: 20rpx;
+  margin-left: 20rpx;
+}
+.info_zong{
+  display: flex;
+  justify-content: space-between;
+}
+.tel_left{width: 50%;text-align: center;border-right: 1rpx solid #eeeeee;display: flex;align-items: center;justify-content: center;}
+.tel_right{width: 50%;text-align: center;display: flex;align-items: center;justify-content: center;}
+.tel_right image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.tel_left image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}

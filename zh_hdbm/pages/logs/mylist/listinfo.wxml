@@ -1,0 +1,101 @@
+<view class="font list">
+  <!-- <view class="header">
+    <view class="header_title">已取消</view>
+     <view class="header_content">订单编号：11051956774026</view>
+    <view class="header_content">创建时间：2017-10-12——10：07</view> 
+  </view> -->
+  <view class="section">
+    <view class="section_name">{{seller.name}}</view>
+    <view class="list_enroll">
+      <!--一个订单列表开始  -->
+      <view class="tuijian_title1">
+        <view class="tuijian_banner">
+          <view>
+            <image class="tuijian_img" src="{{url}}{{slider.logo}}"></image>
+          </view>
+          <view class="tuijian_title3">
+            <view class="tuijian_title2">
+              <view class="rich_one">{{slider.name}}</view>
+            </view>
+            <view class="tuijian_title4">
+              <view class="tuijian_img4">
+                <view>
+                  <image class="tuijian_img1" src="../../images/riqi@2x.png"></image>
+                  <text class="tuijian_img2">{{slider.start_time1}} 开始</text>
+                </view>
+                <view class="tuijian_img3">
+                  <image class="tuijian_img1" src="../../images/didian@2x.png"></image>
+                  <text>{{slider.city}}</text>
+                </view>
+              </view>
+              <view class="flex1">
+                <view>
+                  <image class="tuijian_img1" src="../../images/xianshang@2x.png"></image>
+                  <text class="tuijian_img2" wx:if="{{slider.activity_type==1}}" >线上活动</text>
+                <text class="tuijian_img2" wx:if="{{slider.activity_type==2}}" >线下活动</text>
+                </view>
+                 <view class="tuijian_jiage" wx:if="{{slider.cost>0}}">¥{{slider.cost}}</view> 
+                <view class="tuijian_jiage" wx:if="{{slider.cost<=0}}">免费</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--一个订单列表结束  -->
+    </view>
+
+    <!--查看电子票部分开始  -->
+    <view class="ticket">      
+      <view class="ticket_box">
+        <view class="ticket_left">
+          <view>
+            <!-- <view><text class="ticket_money"><text wx:if="{{slider.cost==0}}">免费参加</text><text wx:if="{{slider.cost!=0}}">{{slider.name}}</text></text></view> -->
+             <view><text class="ticket_money"><text>{{slider.name}}</text></text></view>
+            <!-- <view class="ticket_statu">已取消</view> -->
+             <view class="ticket_statu" style='font-size:24rpx;color:orange' wx:if="{{status==1}}">待参与</view> 
+             <view class="ticket_statu" style='font-size:24rpx;color:orange' wx:if="{{status==2}}">已完成</view>
+          </view>
+          <view wx:if="{{types==1}}">{{slider.bm_name}}<text class="ticket_money">{{slider.tel}}</text></view>
+          <view wx:if="{{types==2}}">{{xinxi[0].value}}<text class="ticket_money">{{xinxi[1].value}}</text></view>
+          <view class="ticket_btn">
+             <view class="quxiao" bindtap='quxiao'>取消活动</view>
+            <view class="wancheng" bindtap='wancheng'>完成活动</view> 
+          </view>
+        </view>
+        <view class="ticket_right" bindtap="chakan">
+          <view>查看电子券</view>
+          <image src="../../images/xiangyou.png"></image>
+        </view>
+      </view>
+    </view>
+    <!--查看电子票部分结束  -->    
+  </view>
+
+  <view class="info_money">
+    <view class="info_zong">
+      <view>票总价</view>
+      <view wx:if="{{slider.cost==0}}">免费</view>
+      <view wx:if="{{slider.cost!=0}}">¥{{slider.cost}}</view>
+    </view>
+  </view>
+  <view class="info_money">
+    <view class="info_zong">
+      <view>报名人信息</view>
+      <view class="info_user">
+        <view wx:if="{{types==1}}">{{slider.bm_name}}（{{slider.tel}}）</view>
+        <view wx:if="{{types==2}}">{{xinxi[0].value}}（{{xinxi[1].value}}）</view>
+        <image src="../../images/Path@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="info_money info_zong">
+    <view class="tel_left" bindtap="lianxi">
+      <image src="../../images/duihua.png"></image>
+      <view>联系主办方</view>
+    </view>
+    <view class="tel_right" bindtap="gengduo">
+      <image src="../../images/dianhua.png"></image>
+      <view>更多活动</view>
+    </view>
+  </view>
+</view>

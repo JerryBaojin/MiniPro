@@ -1,0 +1,38 @@
+<!--zh_hdbm/pages/refer/refer.wxml-->
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class="refer font">
+    <view class="refer_flex2">
+      <view class="refer_width">主办方名称</view>
+      <view class="refer_content2">
+        <input class="name_input" name="text" type="text" placeholder='请输入名称' value='{{text}}' placeholder-style="color:#ccc;" />
+      </view>
+    </view>
+
+    <view class="refer_flex" bindtap='choose'>
+      <view class="refer_width">主办方logo</view>
+      <view class="refer_right">
+        <image class="refer_logo" src="../../images/chuan.png" wx:if="{{logo==null||logo=='请上传图片'}}"></image>
+        <image class="refer_logo" mode='aspectFill' src="{{url}}{{logo}}"></image>
+        <image class="right_img" src="../../images/Path@2x.png"></image>
+      </view>
+    </view>
+
+    <view class="refer_flex" bindtap='jianjie'>
+      <view class="refer_width">主办方简介</view>
+      <view class="refer_right">
+      <view class="refer_content" style='color:#ccc' wx:if="{{tel==''}}">请输入活动简介</view>
+        <view class="refer_content" style='color:#333'>{{tel}}</view>
+        <image class="right_img" src="../images/Path@2x.png"></image>
+      </view>
+    </view>
+
+    <view class="refer_flex2">
+      <view class="refer_width">联系方式</view>
+      <view class="refer_content2">
+        <input class="name_input" name="phone" maxlength="11" type="number" value='{{phone}}' placeholder="请输入电话号码" placeholder-style="color:#ccc;" />
+      </view>
+    </view>
+    <button form-type="submit" class="btn" wx:if="{{fabu==2}}">确认保存</button>
+    <button form-type="submit" class="btn" wx:if="{{fabu==1}}">确认修改</button>
+  </view>
+</form>
